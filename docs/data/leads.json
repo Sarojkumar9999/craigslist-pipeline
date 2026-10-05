@@ -26,6 +26,19 @@
   "website": null
  },
  {
+  "id": "7978084497",
+  "ad_type": "services",
+  "business": null,
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "HOME MANAGER / LIFE MANAGER / CAREGIVER (Hilo, Papaikou, Pepeekeo, Honomu, Hakalau)",
+  "posted": "2026-10-05T02:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-home-manager-life-manager-caregiver/qwMTTzQTPHZD4hi7A9ANxe",
+  "relay": null,
+  "phone": null,
+  "website": null
+ },
+ {
   "id": "7978401120",
   "ad_type": "services",
   "business": "Adult Serenity Care Home",
@@ -455,6 +468,19 @@
   "website": "keepsafecaredirect.com"
  },
  {
+  "id": "7976941587",
+  "ad_type": "services",
+  "business": "Helping Hands Hale",
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Reliable In-Home Kupuna Assistance (Across Big Island)",
+  "posted": "2026-10-03T00:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-reliable-in-home-kupuna-assistance/btUYUUeKrEZkKtvfkDRGQH",
+  "relay": null,
+  "phone": "1-808-747-2273",
+  "website": "www.helpinghands4u.com"
+ },
+ {
   "id": "7976999421",
   "ad_type": "services",
   "business": "Aurelia's Angels",
@@ -700,6 +726,19 @@
   "relay": null,
   "phone": null,
   "website": "keepsafecaredirect.com"
+ },
+ {
+  "id": "7976541681",
+  "ad_type": "services",
+  "business": "Happy House Helpers",
+  "city": "Eugene",
+  "state": "OR",
+  "title": "Happy House Helpers",
+  "posted": "2026-10-02T00:00:00",
+  "url": "https://www.craigslist.org/view/d/springfield-happy-house-helpers/nqwa4R2T7tBsEDsxypFXAA",
+  "relay": null,
+  "phone": null,
+  "website": null
  },
  {
   "id": "7976484645",
@@ -1599,6 +1638,45 @@
   "website": null
  },
  {
+  "id": "7972343466",
+  "ad_type": "services",
+  "business": "Helping Hands Hale",
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Helping Hands Hale | Quality Care for Kupuna (Across Big Island)",
+  "posted": "2026-09-25T00:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-helping-hands-hale-quality-care/ouL8exJLxrRcMR3rD7zRRh",
+  "relay": null,
+  "phone": "1-808-747-2273",
+  "website": "www.helpinghands4u.com"
+ },
+ {
+  "id": "7972131237",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "(In Home Care) Do you need a Caregiver? (Honolulu, O'ahu, Kauai, Big Island, Hilo, Kailua, Waipahu)",
+  "posted": "2026-09-25T00:00:00",
+  "url": "https://www.craigslist.org/view/d/in-home-care-do-you-need-caregiver/hBi9kPEY59hdwhpLMmEPSN",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
+ },
+ {
+  "id": "7972165764",
+  "ad_type": "services",
+  "business": null,
+  "city": "Anchorage",
+  "state": "AK",
+  "title": "RELIABLE HOUSE CLEANING - CAREGIVER RELIEF - PET & HOUSE SITTING",
+  "posted": "2026-09-25T00:00:00",
+  "url": "https://www.craigslist.org/view/d/anchorage-reliable-house-cleaning/rKdpDDyTGoNHDkLavr2xRo",
+  "relay": null,
+  "phone": null,
+  "website": null
+ },
+ {
   "id": "7972373784",
   "ad_type": "services",
   "business": "Mercy Adult Care Home",
@@ -1727,6 +1805,45 @@
   "relay": null,
   "phone": "804-404-3246",
   "website": null
+ },
+ {
+  "id": "7971776775",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Spokane",
+  "state": "WA",
+  "title": "(In Home Care) Do you need a Caregiver? (Spokane, Coeur d'Alene, Country Homes, Cheney, Glenrose)",
+  "posted": "2026-09-24T00:00:00",
+  "url": "https://www.craigslist.org/view/d/in-home-care-do-you-need-caregiver/o3huK8EVLzC8mkj6R61XWC",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
+ },
+ {
+  "id": "7971776220",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Anchorage",
+  "state": "AK",
+  "title": "(In Home Care) Do you need a Caregiver? (Anchorage, Wasilla, Palmer, Knik-Fairview, Meadow Lakes)",
+  "posted": "2026-09-24T00:00:00",
+  "url": "https://www.craigslist.org/view/d/in-home-care-do-you-need-caregiver/bhQeHvsjoMyD6U7wLdH43H",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
+ },
+ {
+  "id": "7971842193",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Billings",
+  "state": "MT",
+  "title": "(In Home Care) Do you need a Caregiver? (Billings, Lockwood, Laurel, Acton, Bozeman, Helena, Custer)",
+  "posted": "2026-09-24T00:00:00",
+  "url": "https://www.craigslist.org/view/d/in-home-care-do-you-need-caregiver/e4tJBn5qs1mtbbWZWnx1Wk",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
  },
  {
   "id": "7971944010",
@@ -2522,6 +2639,19 @@
   "website": "keepsafecaredirect.com"
  },
  {
+  "id": "7968167970",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Fargo",
+  "state": "ND",
+  "title": "(In Home Care) Do you need a Caregiver? (Fargo, Grand Forks, Moorhead, Valley City, Buxton, Horace)",
+  "posted": "2026-09-18T00:00:00",
+  "url": "https://www.craigslist.org/view/d/in-home-care-do-you-need-caregiver/j8Dwxh6kEMW2p6iGmsSEHm",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
+ },
+ {
   "id": "7968289491",
   "ad_type": "services",
   "business": "Keep Safe Care Direct",
@@ -2572,6 +2702,19 @@
   "relay": null,
   "phone": null,
   "website": "keepsafecaredirect.com"
+ },
+ {
+  "id": "7967832849",
+  "ad_type": "services",
+  "business": null,
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Private In Home Elderly Services (Koloa Puhi Lihue Kalaheo Lawai Kapaa)",
+  "posted": "2026-09-17T00:00:00",
+  "url": "https://www.craigslist.org/view/d/lawai-private-in-home-elderly-services/bKK1zycFr6vhMdHGjHCqgj",
+  "relay": null,
+  "phone": "(808)635-8697",
+  "website": null
  },
  {
   "id": "7967748306",
@@ -2689,6 +2832,58 @@
   "relay": null,
   "phone": "301-786-3842",
   "website": null
+ },
+ {
+  "id": "7967285322",
+  "ad_type": "services",
+  "business": null,
+  "city": "Spokane",
+  "state": "WA",
+  "title": "Assistance with in home care (Coeur d'alene idaho)",
+  "posted": "2026-09-16T00:00:00",
+  "url": "https://www.craigslist.org/view/d/post-falls-assistance-with-in-home-care/g3ffZGCCPgxVy68Mgssnnt",
+  "relay": null,
+  "phone": null,
+  "website": null
+ },
+ {
+  "id": "7967284845",
+  "ad_type": "services",
+  "business": null,
+  "city": "Spokane",
+  "state": "WA",
+  "title": "Assistance with end of life care.",
+  "posted": "2026-09-16T00:00:00",
+  "url": "https://www.craigslist.org/view/d/post-falls-assistance-with-end-of-life/mdzoDxboztgP7Fuuih6Cvu",
+  "relay": null,
+  "phone": "509 596 6851",
+  "website": null
+ },
+ {
+  "id": "7967284491",
+  "ad_type": "services",
+  "business": null,
+  "city": "Spokane",
+  "state": "WA",
+  "title": "Reliable Home Care",
+  "posted": "2026-09-16T00:00:00",
+  "url": "https://www.craigslist.org/view/d/post-falls-reliable-home-care/5ZroNiFtzRnKKXQ85KxhfG",
+  "relay": null,
+  "phone": null,
+  "website": null
+ },
+ {
+  "id": "7967053962",
+  "ad_type": "services",
+  "business": "Helping Hands Hale",
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Compassionate Caregivers for Kupuna - Call Today (Across Big Island)",
+  "posted": "2026-09-16T00:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-compassionate-caregivers-for/bpaRQ57i8RQTCZRi1gYRhS",
+  "relay": null,
+  "phone": "1-808-747-2273",
+  "website": "www.helpinghands4u.com"
  },
  {
   "id": "7967269761",
@@ -2871,6 +3066,19 @@
   "relay": null,
   "phone": "610-850-0839",
   "website": null
+ },
+ {
+  "id": "7966414239",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Eugene",
+  "state": "OR",
+  "title": "(In Home Care) Do you need a Caregiver? (Eugene, Springfield, Albany, Lowell, Coburg, Goshen/Creswell)",
+  "posted": "2026-09-15T00:00:00",
+  "url": "https://www.craigslist.org/view/d/in-home-care-do-you-need-caregiver/5wFztFML2RjtBEmFRuV9ou",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
  },
  {
   "id": "7966411413",
@@ -3107,6 +3315,32 @@
   "website": null
  },
  {
+  "id": "7966069290",
+  "ad_type": "services",
+  "business": null,
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Caregiver / Home Health Aide (Hilo)",
+  "posted": "2026-09-14T00:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-caregiver-home-health-aide/w8EH4bdr3PPApiJzKnbiTd",
+  "relay": null,
+  "phone": null,
+  "website": null
+ },
+ {
+  "id": "7965711864",
+  "ad_type": "services",
+  "business": "Keep Safe Care Direct",
+  "city": "Sioux Falls",
+  "state": "SD",
+  "title": "(In Home Care) Do you need a Caregiver? (Sioux Falls, Tea, Harrisburg, Brandon, Sioux City, Le Mars)",
+  "posted": "2026-09-14T00:00:00",
+  "url": "https://www.craigslist.org/view/d/sioux-falls-in-home-care-do-you-need/kUyb451z2rh9tpXgVS5iVK",
+  "relay": null,
+  "phone": null,
+  "website": "keepsafecaredirect.com"
+ },
+ {
   "id": "7965715737",
   "ad_type": "services",
   "business": "eCaregivers",
@@ -3237,6 +3471,19 @@
   "website": "shstucsonnw.com"
  },
  {
+  "id": "7965549876",
+  "ad_type": "services",
+  "business": null,
+  "city": "Spokane",
+  "state": "WA",
+  "title": "Personal Assistant Caretaker (Coeur d'alene)",
+  "posted": "2026-09-13T00:00:00",
+  "url": "https://www.craigslist.org/view/d/coeur-alene-personal-assistant-caretaker/vV8dNaeqYACeLuSvWG9gwz",
+  "relay": null,
+  "phone": "5093865463",
+  "website": null
+ },
+ {
   "id": "7965582213",
   "ad_type": "services",
   "business": "Ellie (caregiver referral)",
@@ -3339,6 +3586,19 @@
   "relay": null,
   "phone": "414-732-9042",
   "website": null
+ },
+ {
+  "id": "7964813778",
+  "ad_type": "services",
+  "business": "Helping Hands Hale",
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Need Help at Home? Kupuna Care You Can Trust (Across Big Island)",
+  "posted": "2026-09-12T00:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-need-help-at-home-kupuna-care-you/5xKnxUfQB6jRo91iUJ2NJ7",
+  "relay": null,
+  "phone": "1-808-747-2273",
+  "website": "www.helpinghands4u.com"
  },
  {
   "id": "7964598852",
@@ -3783,6 +4043,19 @@
   "website": null
  },
  {
+  "id": "7962554760",
+  "ad_type": "services",
+  "business": null,
+  "city": "Spokane",
+  "state": "WA",
+  "title": "Health care offered to SENIOR",
+  "posted": "2026-09-08T00:00:00",
+  "url": "https://www.craigslist.org/view/d/coeur-alene-health-care-offered-to/qDEhJSMWiGQCkrFS1k5JTD",
+  "relay": null,
+  "phone": null,
+  "website": null
+ },
+ {
   "id": "7962468384",
   "ad_type": "services",
   "business": null,
@@ -3887,6 +4160,19 @@
   "website": null
  },
  {
+  "id": "7961863455",
+  "ad_type": "services",
+  "business": null,
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "Private home care CMA certified",
+  "posted": "2026-09-07T00:00:00",
+  "url": "https://www.craigslist.org/view/d/kealia-private-home-care-cma-certified/eCSCGfLaJ2z8UGg7Lz7ZTx",
+  "relay": null,
+  "phone": "808-652-7248",
+  "website": null
+ },
+ {
   "id": "7962056175",
   "ad_type": "services",
   "business": "Angel's Hand Senior Resource",
@@ -3949,6 +4235,19 @@
   "url": "https://www.craigslist.org/view/d/el-cajon-you-need-caregiver/feGHF8kAQ4RKF6qMb42CQR",
   "relay": null,
   "phone": "6196336907",
+  "website": null
+ },
+ {
+  "id": "7961649171",
+  "ad_type": "services",
+  "business": null,
+  "city": "Honolulu",
+  "state": "HI",
+  "title": "HOME MANAGER / LIFE MANAGER / CAREGIVER (Hilo, Papaikou, Pepeekeo, Honomu, Hakalau)",
+  "posted": "2026-09-06T00:00:00",
+  "url": "https://www.craigslist.org/view/d/hilo-home-manager-life-manager-caregiver/agduEmtHucpMNBKU69imNi",
+  "relay": null,
+  "phone": null,
   "website": null
  },
  {
