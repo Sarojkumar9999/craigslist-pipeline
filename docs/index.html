@@ -152,7 +152,7 @@ function render() {
 
 function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
-fetch("../data/leads.json")
+fetch("./data/leads.json")
   .then(r => r.json())
   .then(j => {
     LEADS = j.leads || [];
