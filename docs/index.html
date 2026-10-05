@@ -1,1 +1,172 @@
-<h1>hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craigslist Pipeline — Tap to Send</title>
+<style>
+  :root { --bg:#0f1420; --card:#1a2233; --line:#2a3550; --txt:#e8edf5; --mut:#8b98ad;
+          --acc:#4f8cff; --grn:#2fbf71; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt);
+         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:#0c111c; border-bottom:1px solid var(--line);
+           padding:12px 14px; }
+  header h1 { margin:0 0 2px; font-size:18px; }
+  header .sub { color:var(--mut); font-size:12px; }
+  .filters { display:flex; gap:8px; padding:10px 14px; flex-wrap:wrap; position:sticky; top:57px;
+             background:#0c111c; z-index:9; border-bottom:1px solid var(--line); }
+  .filters select, .filters input { background:var(--card); color:var(--txt); border:1px solid var(--line);
+             border-radius:8px; padding:8px 10px; font-size:14px; }
+  .filters input { flex:1; min-width:120px; }
+  #list { padding:12px 14px 80px; display:flex; flex-direction:column; gap:12px; max-width:720px; margin:0 auto; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
+  .card.done { opacity:.45; }
+  .card h2 { margin:0 0 4px; font-size:16px; color:#7ab8ff; }
+  .card .meta { color:var(--mut); font-size:12px; margin-bottom:8px; }
+  .card .title { font-size:14px; margin-bottom:8px; }
+  .card .links { display:flex; gap:10px; font-size:13px; margin-bottom:10px; flex-wrap:wrap; }
+  .card .links a { color:#7ab8ff; text-decoration:none; }
+  .row { display:flex; gap:8px; }
+  .send { flex:1; background:var(--grn); color:#06281a; border:0; border-radius:10px;
+          padding:14px; font-size:16px; font-weight:700; text-align:center; text-decoration:none; display:block; }
+  .donebtn { background:var(--card); color:var(--mut); border:1px solid var(--line); border-radius:10px;
+             padding:0 14px; font-size:14px; }
+  .card.done .donebtn { color:var(--grn); border-color:var(--grn); }
+  .empty { text-align:center; color:var(--mut); padding:40px 20px; }
+  .count { color:var(--mut); font-size:12px; padding:0 14px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📋 Craigslist Pipeline</h1>
+  <div class="sub" id="summary">loading…</div>
+</header>
+<div class="filters">
+  <select id="fstate"><option value="">All states</option></select>
+  <select id="ftype">
+    <option value="">Services + Jobs</option>
+    <option value="services">Services ads</option>
+    <option value="jobs">Jobs ads</option>
+  </select>
+  <input id="q" type="search" placeholder="Search business / city">
+  <select id="fdone">
+    <option value="todo">To send</option>
+    <option value="all">All incl. sent</option>
+  </select>
+</div>
+<div class="count" id="count"></div>
+<div id="list"></div>
+
+<script>
+// ---- email templates (approved 2026-10-06) ----
+const TPL = {
+  services: {
+    subject: "Saw your home care ad on Craigslist",
+    body:
+`Hi {business} team,
+
+I came across your home care ad on Craigslist {city}.
+
+The problem with Craigslist is simple: new clients come in slow, and you still pay to keep the ad up.
+
+I help home-care agencies get clients through Facebook and Instagram ads instead. It often costs less than lead sites, and families contact you directly.
+
+Are you free for 15 mins this week? I can show you on a quick G Meet what other agencies are doing and what I'd do for {business}.
+
+– Saroj
+
+P.S. If someone else handles your marketing, feel free to forward this to them.`
+  },
+  jobs: {
+    subject: "Saw you're hiring caregivers on Craigslist",
+    body:
+`Hi {business} team,
+
+Noticed your caregiver job post on Craigslist {city}.
+
+Hiring this way is slow. The post sits there, applicants come in one by one, and the good ones get hired somewhere else first.
+
+I help home-care agencies find caregivers through Facebook and Instagram ads. You reach more people, spend less than job boards, and applicants come straight to you.
+
+Are you free for 15 mins this week? I can show you on a quick G Meet what other agencies are doing for hiring and what I'd do for {business}.
+
+– Saroj`
+  }
+};
+
+let LEADS = [];
+const doneSet = new Set(JSON.parse(localStorage.getItem("cl_done") || "[]"));
+const saveDone = () => localStorage.setItem("cl_done", JSON.stringify([...doneSet]));
+
+function mailto(lead) {
+  const t = TPL[lead.ad_type] || TPL.services;
+  const biz = lead.business || "there";
+  const subj = t.subject;
+  const body = t.body.replaceAll("{business}", biz).replaceAll("{city}", lead.city || "");
+  return "mailto:" + lead.relay +
+    "?subject=" + encodeURIComponent(subj) +
+    "&body=" + encodeURIComponent(body);
+}
+
+function render() {
+  const fs = document.getElementById("fstate").value;
+  const ft = document.getElementById("ftype").value;
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const fd = document.getElementById("fdone").value;
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  let shown = 0;
+  for (const l of LEADS) {
+    const isDone = doneSet.has(l.id);
+    if (fd === "todo" && isDone) continue;
+    if (fs && l.state !== fs) continue;
+    if (ft && l.ad_type !== ft) continue;
+    if (q && !((l.business||"") + " " + (l.title||"") + " " + (l.city||"")).toLowerCase().includes(q)) continue;
+    shown++;
+    const d = document.createElement("div");
+    d.className = "card" + (isDone ? " done" : "");
+    const age = l.posted ? ` · posted ${l.posted}` : "";
+    d.innerHTML =
+      `<h2>${esc(l.business || "(unknown business)")}</h2>
+       <div class="meta">${esc(l.city||"")}${l.state?", "+esc(l.state):""} · ${l.ad_type==="jobs"?"💼 jobs ad":"🛎️ services ad"}${age}</div>
+       <div class="title">${esc(l.title||"")}</div>
+       <div class="links">
+         <a href="${esc(l.url)}" target="_blank" rel="noopener">Craigslist ad ↗</a>
+         ${l.phone ? `<span>📞 ${esc(l.phone)}</span>` : ""}
+         ${l.website ? `<a href="${esc(l.website)}" target="_blank" rel="noopener">Website ↗</a>` : ""}
+       </div>
+       <div class="row">
+         <a class="send" href="${mailto(l)}">✉️ Send email</a>
+         <button class="donebtn">${isDone ? "✓ sent" : "mark sent"}</button>
+       </div>`;
+    d.querySelector(".donebtn").onclick = () => {
+      isDone ? doneSet.delete(l.id) : doneSet.add(l.id);
+      saveDone(); render();
+    };
+    list.appendChild(d);
+  }
+  document.getElementById("count").textContent = shown + " to send · " + doneSet.size + " marked sent";
+  if (!shown) list.innerHTML = '<div class="empty">Nothing here. Try clearing filters.</div>';
+}
+
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+fetch("../data/leads.json")
+  .then(r => r.json())
+  .then(j => {
+    LEADS = j.leads || [];
+    document.getElementById("summary").textContent =
+      `${LEADS.length} leads · scraped ${j.scraped_at || "?"}`;
+    const states = [...new Set(LEADS.map(l => l.state).filter(Boolean))].sort();
+    const sel = document.getElementById("fstate");
+    for (const s of states) { const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o); }
+    render();
+  })
+  .catch(() => { document.getElementById("summary").textContent = "no data yet — scrape running"; });
+
+["fstate","ftype","fdone"].forEach(id => document.getElementById(id).addEventListener("change", render));
+document.getElementById("q").addEventListener("input", render);
+</script>
+</body>
+</html>
