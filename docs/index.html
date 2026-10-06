@@ -15,10 +15,11 @@
   header h1 { margin:0 0 2px; font-size:18px; }
   header .sub { color:var(--mut); font-size:12px; }
   .filters { display:flex; gap:8px; padding:10px 14px; flex-wrap:wrap; position:sticky; top:57px;
-             background:#0c111c; z-index:9; border-bottom:1px solid var(--line); }
+             background:#0c111c; z-index:9; border-bottom:1px solid var(--line); align-items:center; }
   .filters select, .filters input { background:var(--card); color:var(--txt); border:1px solid var(--line);
              border-radius:8px; padding:8px 10px; font-size:14px; }
   .filters input { flex:1; min-width:120px; }
+  .broker { color:var(--mut); font-size:13px; display:flex; align-items:center; gap:6px; }
   #list { padding:12px 14px 80px; display:flex; flex-direction:column; gap:12px; max-width:720px; margin:0 auto; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
   .card.done { opacity:.45; }
@@ -27,6 +28,7 @@
   .card .title { font-size:14px; margin-bottom:8px; }
   .card .links { display:flex; gap:10px; font-size:13px; margin-bottom:10px; flex-wrap:wrap; }
   .card .links a { color:#7ab8ff; text-decoration:none; }
+  .card .norelay { color:var(--mut); font-size:12px; margin-top:8px; }
   .row { display:flex; gap:8px; }
   .send { flex:1; background:var(--grn); color:#06281a; border:0; border-radius:10px;
           padding:14px; font-size:16px; font-weight:700; text-align:center; text-decoration:none; display:block; }
@@ -47,17 +49,20 @@
   <select id="ftype">
     <option value="">Services + Jobs</option>
     <option value="services">Services ads</option>
-    <option value="jobs">Jobs ads</option>
+    <!-- FIX 2026-10-06: data uses ad_type "hiring", not "jobs". The old value="jobs"
+         matched zero rows and hiring ads silently got the services email template. -->
+    <option value="hiring">Jobs ads</option>
   </select>
   <input id="q" type="search" placeholder="Search business / city">
   <select id="fdone">
     <option value="todo">To send</option>
     <option value="all">All incl. sent</option>
   </select>
+  <!-- FIX 2026-10-06: one-tap hide for bulk posters (e.g. lead brokers posting in 40+ cities) -->
+  <label class="broker"><input type="checkbox" id="fbroker"> <span id="fbrokerlabel">Hide bulk posters</span></label>
 </div>
 <div class="count" id="count"></div>
 <div id="list"></div>
-
 <script>
 // ---- email templates (approved 2026-10-06) ----
 const TPL = {
@@ -87,24 +92,32 @@ Noticed your caregiver job post on Craigslist {city}.
 
 Hiring this way is slow. The post sits there, applicants come in one by one, and the good ones get hired somewhere else first.
 
-I help home-care agencies find caregivers through Facebook and Instagram ads. You reach more people, spend less than job boards, and applicants come straight to you.
+I help home-care agencies find caregivers through Facebook and Instagram ads. You reach more people, spend less than job boards, and applicants come straight to
+ you.
 
 Are you free for 15 mins this week? I can show you on a quick G Meet what other agencies are doing for hiring and what I'd do for {business}.
 
 – Saroj`
   }
 };
+// FIX 2026-10-06: data labels hiring ads "hiring" — alias so they get the jobs template.
+TPL.hiring = TPL.jobs;
 
 let LEADS = [];
 const doneSet = new Set(JSON.parse(localStorage.getItem("cl_done") || "[]"));
 const saveDone = () => localStorage.setItem("cl_done", JSON.stringify([...doneSet]));
+let bizCounts = {};
 
 function mailto(lead) {
   const t = TPL[lead.ad_type] || TPL.services;
   const biz = lead.business || "there";
   const subj = t.subject;
   const body = t.body.replaceAll("{business}", biz).replaceAll("{city}", lead.city || "");
-  return "mailto:" + lead.relay +
+  // FIX 2026-10-06: no relay emails were collected (Craigslist hCaptcha on reply click).
+  // Old code built "mailto:null". Empty recipient opens compose with subject+body ready;
+  // the sender pastes the relay address grabbed from the ad into the To field.
+  const to = lead.relay ? lead.relay : "";
+  return "mailto:" + to +
     "?subject=" + encodeURIComponent(subj) +
     "&body=" + encodeURIComponent(body);
 }
@@ -114,6 +127,7 @@ function render() {
   const ft = document.getElementById("ftype").value;
   const q = document.getElementById("q").value.trim().toLowerCase();
   const fd = document.getElementById("fdone").value;
+  const hideBulk = document.getElementById("fbroker").checked;
   const list = document.getElementById("list");
   list.innerHTML = "";
   let shown = 0;
@@ -123,13 +137,18 @@ function render() {
     if (fs && l.state !== fs) continue;
     if (ft && l.ad_type !== ft) continue;
     if (q && !((l.business||"") + " " + (l.title||"") + " " + (l.city||"")).toLowerCase().includes(q)) continue;
+    if (hideBulk) {
+      const k = (l.business || "").toLowerCase().trim();
+      if (k && (bizCounts[k] || 0) > 10) continue;
+    }
     shown++;
     const d = document.createElement("div");
     d.className = "card" + (isDone ? " done" : "");
     const age = l.posted ? ` · posted ${l.posted}` : "";
+    const hasRelay = !!l.relay;
     d.innerHTML =
       `<h2>${esc(l.business || "(unknown business)")}</h2>
-       <div class="meta">${esc(l.city||"")}${l.state?", "+esc(l.state):""} · ${l.ad_type==="jobs"?"💼 jobs ad":"🛎️ services ad"}${age}</div>
+       <div class="meta">${esc(l.city||"")}${l.state?", "+esc(l.state):""} · ${l.ad_type==="hiring"?"💼 jobs ad":"🛎️ services ad"}${age}</div>
        <div class="title">${esc(l.title||"")}</div>
        <div class="links">
          <a href="${esc(l.url)}" target="_blank" rel="noopener">Craigslist ad ↗</a>
@@ -137,9 +156,10 @@ function render() {
          ${l.website ? `<a href="${esc(webUrl(l.website))}" target="_blank" rel="noopener">Website ↗</a>` : ""}
        </div>
        <div class="row">
-         <a class="send" href="${mailto(l)}">✉️ Send email</a>
+         <a class="send" href="${mailto(l)}">${hasRelay ? "✉️ Send email" : "✉️ Compose — paste email"}</a>
          <button class="donebtn">${isDone ? "✓ sent" : "mark sent"}</button>
-       </div>`;
+       </div>
+       ${hasRelay ? "" : `<div class="norelay">No email saved for this ad — open the Craigslist ad, tap reply, copy the email address, then paste it into the To field.</div>`}`;
     d.querySelector(".donebtn").onclick = () => {
       isDone ? doneSet.delete(l.id) : doneSet.add(l.id);
       saveDone(); render();
@@ -151,22 +171,31 @@ function render() {
 }
 
 function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+// FIX 2026-10-06 (main): website values often lack a scheme (e.g. "www.foo.com"),
+// which the browser resolves as a relative path -> GitHub Pages 404. Normalize.
 function webUrl(w){ return /^https?:\/\//i.test(w) ? w : "https://" + w; }
 
 fetch("./data/leads.json")
   .then(r => r.json())
   .then(j => {
-    LEADS = j.leads || [];
+    // FIX 2026-10-06: tolerate both the wrapped schema {leads:[...]} and a bare array,
+    // so a future merge that forgets the wrapper can't silently zero the dashboard again.
+    LEADS = Array.isArray(j) ? j : (j.leads || []);
+    const scrapedAt = Array.isArray(j) ? "overnight crawl" : (j.scraped_at || "?");
     document.getElementById("summary").textContent =
-      `${LEADS.length} leads · scraped ${j.scraped_at || "?"}`;
+      `${LEADS.length} leads · scraped ${scrapedAt}`;
     const states = [...new Set(LEADS.map(l => l.state).filter(Boolean))].sort();
     const sel = document.getElementById("fstate");
     for (const s of states) { const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o); }
+    bizCounts = {};
+    for (const l of LEADS) { const k = (l.business || "").toLowerCase().trim(); if (k) bizCounts[k] = (bizCounts[k] || 0) + 1; }
+    const bulkRows = LEADS.filter(l => { const k = (l.business || "").toLowerCase().trim(); return k && (bizCounts[k] || 0) > 10; }).length;
+    document.getElementById("fbrokerlabel").textContent = `Hide bulk posters (${bulkRows} rows)`;
     render();
   })
   .catch(() => { document.getElementById("summary").textContent = "no data yet — scrape running"; });
 
-["fstate","ftype","fdone"].forEach(id => document.getElementById(id).addEventListener("change", render));
+["fstate","ftype","fdone","fbroker"].forEach(id => document.getElementById(id).addEventListener("change", render));
 document.getElementById("q").addEventListener("input", render);
 </script>
 </body>
