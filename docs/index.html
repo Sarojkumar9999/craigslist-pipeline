@@ -134,7 +134,7 @@ function render() {
        <div class="links">
          <a href="${esc(l.url)}" target="_blank" rel="noopener">Craigslist ad ↗</a>
          ${l.phone ? `<span>📞 ${esc(l.phone)}</span>` : ""}
-         ${l.website ? `<a href="${esc(l.website)}" target="_blank" rel="noopener">Website ↗</a>` : ""}
+         ${l.website ? `<a href="${esc(webUrl(l.website))}" target="_blank" rel="noopener">Website ↗</a>` : ""}
        </div>
        <div class="row">
          <a class="send" href="${mailto(l)}">✉️ Send email</a>
@@ -151,6 +151,7 @@ function render() {
 }
 
 function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function webUrl(w){ return /^https?:\/\//i.test(w) ? w : "https://" + w; }
 
 fetch("./data/leads.json")
   .then(r => r.json())
