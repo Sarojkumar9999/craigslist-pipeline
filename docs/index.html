@@ -42,13 +42,59 @@
              border-radius:8px; padding:10px; font-size:14px; min-width:0; }
   .savebtn { background:var(--acc); color:#fff; border:0; border-radius:8px;
              padding:0 16px; font-size:14px; font-weight:600; }
+  /* ---- team login + activity log ---- */
+  #loginOverlay { position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:100;
+             display:flex; align-items:center; justify-content:center; padding:20px; }
+  #loginOverlay.hidden { display:none; }
+  .loginbox { background:var(--card); border:1px solid var(--line); border-radius:16px;
+             padding:28px 24px; max-width:340px; width:100%; text-align:center; }
+  .loginbox h2 { margin:0 0 8px; font-size:20px; }
+  .loginbox p { color:var(--mut); font-size:14px; margin:0 0 16px; }
+  .loginbox input { width:100%; background:#0c111c; color:var(--txt); border:1px solid var(--line);
+             border-radius:10px; padding:12px; font-size:16px; margin-bottom:12px; }
+  .loginbox button { width:100%; background:var(--grn); color:#06281a; border:0; border-radius:10px;
+             padding:14px; font-size:16px; font-weight:700; }
+  .userbar { display:flex; align-items:center; gap:8px; margin-top:6px; font-size:13px; color:var(--mut); }
+  .userbar b { color:var(--txt); }
+  .userbar button { background:none; border:1px solid var(--line); color:var(--mut); border-radius:6px;
+             padding:2px 8px; font-size:12px; }
+  .tabs { display:flex; gap:8px; padding:10px 14px 0; max-width:720px; margin:0 auto; }
+  .tab { flex:1; background:var(--card); color:var(--mut); border:1px solid var(--line); border-radius:10px 10px 0 0;
+             padding:10px; font-size:14px; font-weight:600; border-bottom:0; }
+  .tab.active { color:var(--txt); background:#0c111c; }
+  #activityView { display:none; padding:12px 14px 80px; max-width:720px; margin:0 auto; }
+  #activityView.visible { display:block; }
+  .actfilters { display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
+  .actfilters select { background:var(--card); color:var(--txt); border:1px solid var(--line);
+             border-radius:8px; padding:8px 10px; font-size:14px; }
+  .exportbtn { background:var(--card); color:var(--txt); border:1px solid var(--line); border-radius:8px;
+             padding:8px 14px; font-size:14px; }
+  .actrow { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+             margin-bottom:8px; font-size:13px; }
+  .actrow .ats { color:var(--mut); font-size:11px; }
+  .actrow .auser { color:#7ab8ff; font-weight:600; }
+  .actrow .aaction { font-weight:600; }
+  .actstats { color:var(--mut); font-size:12px; margin-bottom:12px; }
+  .statgrid { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .statcard { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; flex:1; min-width:120px; }
+  .statcard .n { font-size:22px; font-weight:700; color:var(--grn); }
+  .statcard .l { font-size:11px; color:var(--mut); }
 </style>
 </head>
 <body>
 <header>
   <h1>📋 Craigslist Pipeline</h1>
   <div class="sub" id="summary">loading…</div>
+  <div class="userbar" id="userbar" style="display:none">
+    👤 <b id="username"></b>
+    <button onclick="switchUser()">switch</button>
+  </div>
 </header>
+<div class="tabs">
+  <button class="tab active" id="tabLeads" onclick="showTab('leads')">📋 Leads</button>
+  <button class="tab" id="tabActivity" onclick="showTab('activity')">📊 Activity</button>
+</div>
+<div id="leadsView">
 <div class="filters">
   <select id="fstate"><option value="">All states</option></select>
   <select id="ftype">
@@ -74,6 +120,29 @@
 </div>
 <div class="count" id="count"></div>
 <div id="list"></div>
+</div><!-- /leadsView -->
+<div id="activityView">
+  <div class="statgrid" id="statgrid"></div>
+  <div class="actfilters">
+    <select id="fuser"><option value="">All team members</option></select>
+    <select id="faction">
+      <option value="">All actions</option>
+      <option value="email_saved">Email saved</option>
+      <option value="marked_sent">Marked sent</option>
+      <option value="unmarked_sent">Unmarked sent</option>
+    </select>
+    <button class="exportbtn" onclick="exportActivity()">⬇ Export CSV</button>
+  </div>
+  <div id="actlist"></div>
+</div>
+<div id="loginOverlay">
+  <div class="loginbox">
+    <h2>👋 Who's working?</h2>
+    <p>Enter your name so the team can see who did what.</p>
+    <input id="loginName" placeholder="Your name" autocomplete="off">
+    <button onclick="doLogin()">Start working →</button>
+  </div>
+</div>
 <script>
 // ---- email templates (approved 2026-10-06) ----
 const TPL = {
@@ -113,6 +182,118 @@ Are you free for 15 mins this week? I can show you on a quick G Meet what other 
 };
 // FIX 2026-10-06: data labels hiring ads "hiring" — alias so they get the jobs template.
 TPL.hiring = TPL.jobs;
+
+// ---- team login + activity log ----
+let currentUser = localStorage.getItem("cl_user") || "";
+let activityLog = JSON.parse(localStorage.getItem("cl_activity") || "[]");
+
+function doLogin() {
+  const name = (document.getElementById("loginName").value || "").trim();
+  if (!name) { document.getElementById("loginName").focus(); return; }
+  currentUser = name;
+  localStorage.setItem("cl_user", name);
+  document.getElementById("loginOverlay").classList.add("hidden");
+  updateUserbar();
+  logActivity("login", null, "started session");
+}
+function switchUser() {
+  document.getElementById("loginOverlay").classList.remove("hidden");
+  document.getElementById("loginName").value = "";
+  document.getElementById("loginName").focus();
+}
+function updateUserbar() {
+  const bar = document.getElementById("userbar");
+  if (currentUser) {
+    bar.style.display = "flex";
+    document.getElementById("username").textContent = currentUser;
+  } else {
+    bar.style.display = "none";
+  }
+}
+function logActivity(action, lead, detail) {
+  const entry = {
+    ts: new Date().toISOString(),
+    user: currentUser || "unknown",
+    action: action,
+    leadId: lead ? lead.id : "",
+    business: lead ? (lead.business || lead.title || "") : "",
+    detail: detail || ""
+  };
+  activityLog.push(entry);
+  // cap at 5000 entries to avoid localStorage bloat
+  if (activityLog.length > 5000) activityLog = activityLog.slice(-5000);
+  localStorage.setItem("cl_activity", JSON.stringify(activityLog));
+  // optional webhook for shared team log (set via console: localStorage.setItem("cl_webhook", "https://..."))
+  const hook = localStorage.getItem("cl_webhook");
+  if (hook) {
+    fetch(hook, {method: "POST", mode: "no-cors",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(entry)}).catch(()=>{});
+  }
+}
+function showTab(which) {
+  document.getElementById("tabLeads").classList.toggle("active", which === "leads");
+  document.getElementById("tabActivity").classList.toggle("active", which === "activity");
+  document.getElementById("leadsView").style.display = which === "leads" ? "" : "none";
+  document.getElementById("activityView").classList.toggle("visible", which === "activity");
+  if (which === "activity") renderActivity();
+}
+function renderActivity() {
+  const fu = document.getElementById("fuser").value;
+  const fa = document.getElementById("faction").value;
+  // per-user stats
+  const byUser = {};
+  for (const e of activityLog) {
+    if (!byUser[e.user]) byUser[e.user] = {saved: 0, sent: 0};
+    if (e.action === "email_saved") byUser[e.user].saved++;
+    if (e.action === "marked_sent") byUser[e.user].sent++;
+  }
+  const users = Object.keys(byUser).sort();
+  // user filter dropdown
+  const fsel = document.getElementById("fuser");
+  const cur = fsel.value;
+  fsel.innerHTML = '<option value="">All team members</option>';
+  for (const u of users) {
+    const o = document.createElement("option");
+    o.value = u; o.textContent = `${u} (${byUser[u].saved} emails, ${byUser[u].sent} sent)`;
+    fsel.appendChild(o);
+  }
+  fsel.value = cur;
+  // stat cards
+  const sg = document.getElementById("statgrid");
+  sg.innerHTML = users.map(u =>
+    `<div class="statcard"><div class="n">${byUser[u].saved + byUser[u].sent}</div>
+     <div class="l">${esc(u)}<br>✉️ ${byUser[u].saved} emails · ✅ ${byUser[u].sent} sent</div></div>`
+  ).join("") || '<div class="actstats">No activity yet.</div>';
+  // activity rows (newest first)
+  const rows = activityLog.slice().reverse().filter(e =>
+    (!fu || e.user === fu) && (!fa || e.action === fa));
+  const al = document.getElementById("actlist");
+  al.innerHTML = rows.slice(0, 200).map(e => {
+    const d = new Date(e.ts);
+    const when = d.toLocaleString("en-IN", {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"});
+    const actLabel = {"email_saved": "✉️ saved email", "marked_sent": "✅ marked sent",
+      "unmarked_sent": "↩️ unmarked sent", "login": "👋 logged in"}[e.action] || e.action;
+    return `<div class="actrow">
+      <span class="ats">${when}</span> ·
+      <span class="auser">${esc(e.user)}</span>
+      <span class="aaction">${actLabel}</span>
+      ${e.business ? ` — ${esc(e.business)}` : ""}
+      ${e.detail ? `<div class="ats">${esc(e.detail)}</div>` : ""}
+    </div>`;
+  }).join("") || '<div class="empty">No matching activity.</div>';
+}
+function exportActivity() {
+  const rows = [["timestamp", "user", "action", "lead_id", "business", "detail"]];
+  for (const e of activityLog) {
+    rows.push([e.ts, e.user, e.action, e.leadId, e.business, e.detail]);
+  }
+  const csv = rows.map(r => r.map(c => `"${String(c||"").replace(/"/g, '""')}"`).join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], {type: "text/csv"}));
+  a.download = "craigslist-activity-" + new Date().toISOString().slice(0, 10) + ".csv";
+  a.click();
+}
 
 let LEADS = [];
 const doneSet = new Set(JSON.parse(localStorage.getItem("cl_done") || "[]"));
@@ -188,7 +369,8 @@ function render() {
             </div>
             <div class="norelay">No email saved for this ad — open the Craigslist ad, tap reply, copy the email address, paste it above and hit Save.</div>`}`;
     d.querySelector(".donebtn").onclick = () => {
-      isDone ? doneSet.delete(l.id) : doneSet.add(l.id);
+      if (isDone) { doneSet.delete(l.id); logActivity("unmarked_sent", l, ""); }
+      else { doneSet.add(l.id); logActivity("marked_sent", l, ""); }
       saveDone(); render();
     };
     const saveBtn = d.querySelector(".savebtn");
@@ -198,7 +380,9 @@ function render() {
         const em = (inp.value || "").trim();
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { inp.focus(); inp.style.borderColor = "#e5484d"; return; }
         savedEmails[l.id] = em;
-        saveEmails(); render();
+        saveEmails();
+        logActivity("email_saved", l, em);
+        render();
       };
     }
     list.appendChild(d);
@@ -234,6 +418,16 @@ fetch("./data/leads.json")
 
 ["fstate","ftype","fdone","femail","fbroker"].forEach(id => document.getElementById(id).addEventListener("change", render));
 document.getElementById("q").addEventListener("input", render);
+document.getElementById("fuser").addEventListener("change", renderActivity);
+document.getElementById("faction").addEventListener("change", renderActivity);
+// init login: show overlay if no saved name
+updateUserbar();
+if (!currentUser) {
+  document.getElementById("loginOverlay").classList.remove("hidden");
+} else {
+  document.getElementById("loginOverlay").classList.add("hidden");
+}
+document.getElementById("loginName").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
 </script>
 </body>
 </html>
