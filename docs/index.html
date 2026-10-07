@@ -141,6 +141,7 @@
     <p>Enter the team password and your name.</p>
     <input id="loginPass" type="password" placeholder="Team password" autocomplete="off">
     <input id="loginName" placeholder="Your name" autocomplete="off">
+    <input id="loginToken" type="password" placeholder="GitHub token (paste once)" autocomplete="off" style="display:none">
     <button onclick="doLogin()">Start working →</button>
     <p id="loginErr" style="color:#e5484d;display:none;margin-top:8px">Wrong password. Ask Saroj.</p>
   </div>
@@ -149,7 +150,7 @@
 // ---- team config ----
 const TEAM_PASSWORD = "careteam2026"; // Saroj: ask me to change this
 const GH_REPO = "Sarojkumar9999/craigslist-pipeline";
-const GH_TOKEN = ""; // Saroj: paste fine-grained PAT here (contents read+write, this repo only)
+const ghToken = () => localStorage.getItem("cl_gh_token") || "";
 const isAdmin = () => (currentUser || "").toLowerCase() === "saroj";
 // ---- email templates (approved 2026-10-06) ----
 const TPL = {
@@ -197,12 +198,20 @@ let activityLog = JSON.parse(localStorage.getItem("cl_activity") || "[]");
 function doLogin() {
   const pass = (document.getElementById("loginPass").value || "").trim();
   const name = (document.getElementById("loginName").value || "").trim();
+  const token = (document.getElementById("loginToken").value || "").trim();
   if (pass !== TEAM_PASSWORD) {
     document.getElementById("loginErr").style.display = "block";
     document.getElementById("loginPass").focus();
     return;
   }
   if (!name) { document.getElementById("loginName").focus(); return; }
+  if (token) localStorage.setItem("cl_gh_token", token);
+  // show token field if not yet saved
+  if (!ghToken() && !token) {
+    document.getElementById("loginToken").style.display = "block";
+    document.getElementById("loginToken").focus();
+    return;
+  }
   currentUser = name;
   localStorage.setItem("cl_user", name);
   document.getElementById("loginOverlay").classList.add("hidden");
@@ -217,15 +226,16 @@ async function ghRead(path) {
   return res.json();
 }
 async function ghWrite(path, data, retries) {
-  if (!GH_TOKEN) { console.warn("GH_TOKEN not set, skipping push"); return false; }
+  const token = ghToken();
+  if (!token) return false;
   retries = retries || 1;
   try {
     const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
-      headers: {Authorization: "Bearer " + GH_TOKEN, Accept: "application/vnd.github+json"}});
+      headers: {Authorization: "Bearer " + token, Accept: "application/vnd.github+json"}});
     const sha = (await getRes.json()).sha;
     const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
       method: "PUT",
-      headers: {Authorization: "Bearer " + GH_TOKEN, Accept: "application/vnd.github+json",
+      headers: {Authorization: "Bearer " + token, Accept: "application/vnd.github+json",
         "Content-Type": "application/json"},
       body: JSON.stringify({message: "Dashboard: " + path + " update",
         content: btoa(unescape(encodeURIComponent(JSON.stringify(data)))),
