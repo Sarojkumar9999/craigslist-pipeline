@@ -90,6 +90,12 @@
     <span id="syncStatus" style="font-size:11px"></span>
     <button onclick="switchUser()">switch</button>
   </div>
+  <div id="tokenWarn" style="display:none;background:#3a2a00;border:1px solid #e8a33d;color:#ffd88a;
+       padding:10px 14px;font-size:13px;text-align:center">
+    ⚠ No GitHub token saved — your work won't sync to the team.
+    <button onclick="switchUser()" style="background:#e8a33d;border:0;border-radius:6px;
+       padding:4px 12px;font-weight:700;margin-left:8px">Add token</button>
+  </div>
 </header>
 <div class="tabs">
   <button class="tab active" id="tabLeads" onclick="showTab('leads')">📋 Leads</button>
@@ -298,11 +304,15 @@ function switchUser() {
 }
 function updateUserbar() {
   const bar = document.getElementById("userbar");
+  const warn = document.getElementById("tokenWarn");
   if (currentUser) {
     bar.style.display = "flex";
     document.getElementById("username").textContent = currentUser;
+    // show warning if no token
+    warn.style.display = ghToken() ? "none" : "block";
   } else {
     bar.style.display = "none";
+    warn.style.display = "none";
   }
 }
 function updateSyncStatus(s) {
