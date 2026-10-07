@@ -252,15 +252,32 @@ async function loadSharedData() {
       ghRead("docs/data/saved_emails.json"),
       ghRead("docs/data/sent.json"),
       ghRead("docs/data/activity.json")]);
-    if (emails) for (const k in emails) savedEmails[k] = emails[k];
+    if (emails) for (const k in emails) {
+      // keep local if it's newer than shared
+      const local = savedEmails[k];
+      const remote = emails[k];
+      if (!local || (remote.at && local.at && remote.at > local.at) || (remote.at && !local.at)) {
+        savedEmails[k] = remote;
+      }
+    }
     if (sent) for (const k in sent) {
       if (!doneSet.has(k)) doneSet.add(k);
     }
-    if (act && Array.isArray(act)) activityLog = act.slice(-5000);
+    if (act && Array.isArray(act)) {
+      // merge: keep all unique entries from both local and shared
+      const seen = new Set(activityLog.map(e => e.ts + "|" + e.user + "|" + e.action + "|" + e.leadId));
+      for (const e of act) {
+        const key = e.ts + "|" + e.user + "|" + e.action + "|" + e.leadId;
+        if (!seen.has(key)) { activityLog.push(e); seen.add(key); }
+      }
+      activityLog.sort((a, b) => a.ts < b.ts ? -1 : 1);
+      if (activityLog.length > 5000) activityLog = activityLog.slice(-5000);
+    }
     localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
     saveDone();
     localStorage.setItem("cl_activity", JSON.stringify(activityLog));
-  } catch (e) { console.warn("shared load failed, using local", e); }
+    return true;
+  } catch (e) { console.warn("shared load failed, using local", e); return false; }
 }
 async function pushSharedData() {
   updateSyncStatus("syncing…");
