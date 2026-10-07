@@ -137,13 +137,20 @@
 </div>
 <div id="loginOverlay">
   <div class="loginbox">
-    <h2>👋 Who's working?</h2>
-    <p>Enter your name so the team can see who did what.</p>
+    <h2>🔒 Team login</h2>
+    <p>Enter the team password and your name.</p>
+    <input id="loginPass" type="password" placeholder="Team password" autocomplete="off">
     <input id="loginName" placeholder="Your name" autocomplete="off">
     <button onclick="doLogin()">Start working →</button>
+    <p id="loginErr" style="color:#e5484d;display:none;margin-top:8px">Wrong password. Ask Saroj.</p>
   </div>
 </div>
 <script>
+// ---- team config ----
+const TEAM_PASSWORD = "careteam2026"; // Saroj: ask me to change this
+const GH_REPO = "Sarojkumar9999/craigslist-pipeline";
+const GH_TOKEN = ""; // Saroj: paste fine-grained PAT here (contents read+write, this repo only)
+const isAdmin = () => (currentUser || "").toLowerCase() === "saroj";
 // ---- email templates (approved 2026-10-06) ----
 const TPL = {
   services: {
@@ -188,13 +195,73 @@ let currentUser = localStorage.getItem("cl_user") || "";
 let activityLog = JSON.parse(localStorage.getItem("cl_activity") || "[]");
 
 function doLogin() {
+  const pass = (document.getElementById("loginPass").value || "").trim();
   const name = (document.getElementById("loginName").value || "").trim();
+  if (pass !== TEAM_PASSWORD) {
+    document.getElementById("loginErr").style.display = "block";
+    document.getElementById("loginPass").focus();
+    return;
+  }
   if (!name) { document.getElementById("loginName").focus(); return; }
   currentUser = name;
   localStorage.setItem("cl_user", name);
   document.getElementById("loginOverlay").classList.add("hidden");
   updateUserbar();
   logActivity("login", null, "started session");
+  loadSharedData().then(() => render());
+}
+// ---- GitHub-backed shared storage ----
+async function ghRead(path) {
+  const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/main/${path}?t=${Date.now()}`);
+  if (!res.ok) return null;
+  return res.json();
+}
+async function ghWrite(path, data, retries) {
+  if (!GH_TOKEN) { console.warn("GH_TOKEN not set, skipping push"); return false; }
+  retries = retries || 1;
+  try {
+    const getRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
+      headers: {Authorization: "Bearer " + GH_TOKEN, Accept: "application/vnd.github+json"}});
+    const sha = (await getRes.json()).sha;
+    const putRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
+      method: "PUT",
+      headers: {Authorization: "Bearer " + GH_TOKEN, Accept: "application/vnd.github+json",
+        "Content-Type": "application/json"},
+      body: JSON.stringify({message: "Dashboard: " + path + " update",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(data)))),
+        sha: sha, branch: "main"})});
+    if (putRes.status === 409 && retries > 0) {
+      await new Promise(r => setTimeout(r, 1500));
+      return ghWrite(path, data, retries - 1);
+    }
+    return putRes.ok;
+  } catch (e) { console.warn("ghWrite failed", e); return false; }
+}
+async function loadSharedData() {
+  try {
+    const [emails, sent, act] = await Promise.all([
+      ghRead("docs/data/saved_emails.json"),
+      ghRead("docs/data/sent.json"),
+      ghRead("docs/data/activity.json")]);
+    if (emails) for (const k in emails) savedEmails[k] = emails[k];
+    if (sent) for (const k in sent) {
+      if (!doneSet.has(k)) doneSet.add(k);
+    }
+    if (act && Array.isArray(act)) activityLog = act.slice(-5000);
+    localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
+    saveDone();
+    localStorage.setItem("cl_activity", JSON.stringify(activityLog));
+  } catch (e) { console.warn("shared load failed, using local", e); }
+}
+async function pushSharedData() {
+  const emailsObj = {};
+  for (const k in savedEmails) emailsObj[k] = savedEmails[k];
+  const sentObj = {};
+  for (const id of doneSet) sentObj[id] = {by: currentUser, at: new Date().toISOString()};
+  await Promise.all([
+    ghWrite("docs/data/saved_emails.json", emailsObj),
+    ghWrite("docs/data/sent.json", sentObj),
+    ghWrite("docs/data/activity.json", activityLog.slice(-5000))]);
 }
 function switchUser() {
   document.getElementById("loginOverlay").classList.remove("hidden");
@@ -220,10 +287,10 @@ function logActivity(action, lead, detail) {
     detail: detail || ""
   };
   activityLog.push(entry);
-  // cap at 5000 entries to avoid localStorage bloat
   if (activityLog.length > 5000) activityLog = activityLog.slice(-5000);
   localStorage.setItem("cl_activity", JSON.stringify(activityLog));
-  // optional webhook for shared team log (set via console: localStorage.setItem("cl_webhook", "https://..."))
+  // push to shared GitHub store (fire and forget)
+  pushSharedData();
   const hook = localStorage.getItem("cl_webhook");
   if (hook) {
     fetch(hook, {method: "POST", mode: "no-cors",
@@ -241,9 +308,11 @@ function showTab(which) {
 function renderActivity() {
   const fu = document.getElementById("fuser").value;
   const fa = document.getElementById("faction").value;
+  // non-admin sees only their own activity
+  const visible = isAdmin() ? activityLog : activityLog.filter(e => e.user === currentUser);
   // per-user stats
   const byUser = {};
-  for (const e of activityLog) {
+  for (const e of visible) {
     if (!byUser[e.user]) byUser[e.user] = {saved: 0, sent: 0};
     if (e.action === "email_saved") byUser[e.user].saved++;
     if (e.action === "marked_sent") byUser[e.user].sent++;
@@ -266,7 +335,7 @@ function renderActivity() {
      <div class="l">${esc(u)}<br>✉️ ${byUser[u].saved} emails · ✅ ${byUser[u].sent} sent</div></div>`
   ).join("") || '<div class="actstats">No activity yet.</div>';
   // activity rows (newest first)
-  const rows = activityLog.slice().reverse().filter(e =>
+  const rows = visible.slice().reverse().filter(e =>
     (!fu || e.user === fu) && (!fa || e.action === fa));
   const al = document.getElementById("actlist");
   al.innerHTML = rows.slice(0, 200).map(e => {
@@ -298,11 +367,20 @@ function exportActivity() {
 let LEADS = [];
 const doneSet = new Set(JSON.parse(localStorage.getItem("cl_done") || "[]"));
 const saveDone = () => localStorage.setItem("cl_done", JSON.stringify([...doneSet]));
-// Manually saved emails (lead id -> email), persisted in localStorage
-const savedEmails = JSON.parse(localStorage.getItem("cl_emails") || "{}");
+// Manually saved emails (lead id -> {email, by, at}), synced via GitHub
+let savedEmails = JSON.parse(localStorage.getItem("cl_emails") || "{}");
 const saveEmails = () => localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
-// Effective email: scraped relay first, then manually saved
-const leadEmail = (l) => l.relay || savedEmails[l.id] || "";
+// Effective email: scraped relay first, then manually saved (handles old string format too)
+const leadEmail = (l) => {
+  if (l.relay) return l.relay;
+  const s = savedEmails[l.id];
+  if (!s) return "";
+  return typeof s === "string" ? s : (s.email || "");
+};
+const savedBy = (l) => {
+  const s = savedEmails[l.id];
+  return (s && typeof s === "object") ? (s.by || "") : "";
+};
 let bizCounts = {};
 
 function mailto(lead) {
@@ -362,7 +440,7 @@ function render() {
          <button class="donebtn">${isDone ? "✓ sent" : "mark sent"}</button>
        </div>
        ${hasEmail
-         ? (savedEmails[l.id] ? `<div class="norelay">✉️ ${esc(savedEmails[l.id])} (saved by you)</div>` : "")
+         ? (savedEmails[l.id] ? `<div class="norelay">✉️ ${esc(leadEmail(l))} (saved by ${esc(savedBy(l) || "you")})</div>` : "")
          : `<div class="emailrow">
               <input type="email" class="emailinput" placeholder="Paste email address" inputmode="email">
               <button class="savebtn">Save</button>
@@ -379,7 +457,7 @@ function render() {
         const inp = d.querySelector(".emailinput");
         const em = (inp.value || "").trim();
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { inp.focus(); inp.style.borderColor = "#e5484d"; return; }
-        savedEmails[l.id] = em;
+        savedEmails[l.id] = {email: em, by: currentUser, at: new Date().toISOString()};
         saveEmails();
         logActivity("email_saved", l, em);
         render();
@@ -426,8 +504,11 @@ if (!currentUser) {
   document.getElementById("loginOverlay").classList.remove("hidden");
 } else {
   document.getElementById("loginOverlay").classList.add("hidden");
+  // load shared team data in background, then re-render
+  loadSharedData().then(() => { render(); if (document.getElementById("activityView").classList.contains("visible")) renderActivity(); });
 }
 document.getElementById("loginName").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
+document.getElementById("loginPass").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
 </script>
 </body>
 </html>
