@@ -221,8 +221,9 @@ function doLogin() {
   document.getElementById("loginOverlay").classList.add("hidden");
   updateUserbar();
   updateSyncStatus("syncing…");
-  logActivity("login", null, "started session");
-  loadSharedData().then(() => { updateSyncStatus("✓ synced"); render(); });
+  // load shared state BEFORE logging the login, so the login push
+  // can't overwrite a teammate's data with this session's empty local state
+  loadSharedData().then(() => { logActivity("login", null, "started session"); updateSyncStatus("✓ synced"); render(); });
 }
 // ---- GitHub-backed shared storage ----
 async function ghRead(path) {
@@ -287,14 +288,43 @@ async function loadSharedData() {
 }
 async function pushSharedData() {
   updateSyncStatus("syncing…");
+  // read shared state first so a session with stale/empty local data
+  // can never wipe a teammate's saves (read-merge-write)
+  let sharedEmails = {}, sharedSent = {}, sharedAct = [];
+  try {
+    const [e, s, a] = await Promise.all([
+      ghRead("docs/data/saved_emails.json"),
+      ghRead("docs/data/sent.json"),
+      ghRead("docs/data/activity.json")]);
+    if (e) sharedEmails = e;
+    if (s) sharedSent = s;
+    if (Array.isArray(a)) sharedAct = a;
+  } catch (err) { console.warn("shared read failed", err); }
   const emailsObj = {};
-  for (const k in savedEmails) emailsObj[k] = savedEmails[k];
+  for (const k in sharedEmails) emailsObj[k] = sharedEmails[k];
+  for (const k in savedEmails) emailsObj[k] = savedEmails[k]; // local wins ties
   const sentObj = {};
+  for (const k in sharedSent) sentObj[k] = sharedSent[k];
   for (const id of doneSet) sentObj[id] = {by: currentUser, at: new Date().toISOString()};
+  const seen = new Set(sharedAct.map(x => x.ts + "|" + x.user + "|" + x.action + "|" + x.leadId));
+  const mergedAct = sharedAct.slice();
+  for (const e of activityLog) {
+    const k = e.ts + "|" + e.user + "|" + e.action + "|" + e.leadId;
+    if (!seen.has(k)) { seen.add(k); mergedAct.push(e); }
+  }
   const results = await Promise.all([
     ghWrite("docs/data/saved_emails.json", emailsObj),
     ghWrite("docs/data/sent.json", sentObj),
-    ghWrite("docs/data/activity.json", activityLog.slice(-5000))]);
+    ghWrite("docs/data/activity.json", mergedAct.slice(-5000))]);
+  // converge local state with shared so later actions can't drop data
+  for (const k in emailsObj) savedEmails[k] = emailsObj[k];
+  for (const k in sentObj) doneSet.add(k);
+  activityLog = mergedAct.slice(-5000);
+  try {
+    localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
+    localStorage.setItem("cl_done", JSON.stringify([...doneSet]));
+    localStorage.setItem("cl_activity", JSON.stringify(activityLog));
+  } catch (err) {}
   updateSyncStatus(results.every(Boolean) ? "✓ synced" : "⚠ sync failed — check token");
 }
 function switchUser() {
