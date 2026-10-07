@@ -35,6 +35,8 @@
   .donebtn { background:var(--card); color:var(--mut); border:1px solid var(--line); border-radius:10px;
              padding:0 14px; font-size:14px; }
   .card.done .donebtn { color:var(--grn); border-color:var(--grn); }
+  .dupbtn { background:var(--card); color:var(--mut); border:1px solid var(--line); border-radius:10px;
+             padding:0 14px; font-size:14px; }
   .empty { text-align:center; color:var(--mut); padding:40px 20px; }
   .count { color:var(--mut); font-size:12px; padding:0 14px; }
   .emailrow { display:flex; gap:8px; margin-top:8px; }
@@ -255,9 +257,10 @@ async function ghWrite(path, data, retries) {
 }
 async function loadSharedData() {
   try {
-    const [emails, sent, act] = await Promise.all([
+    const [emails, sent, dup, act] = await Promise.all([
       ghRead("docs/data/saved_emails.json"),
       ghRead("docs/data/sent.json"),
+      ghRead("docs/data/duplicates.json"),
       ghRead("docs/data/activity.json")]);
     if (emails) for (const k in emails) {
       // keep local if it's newer than shared
@@ -269,6 +272,9 @@ async function loadSharedData() {
     }
     if (sent) for (const k in sent) {
       if (!doneSet.has(k)) doneSet.add(k);
+    }
+    if (dup) for (const k in dup) {
+      if (!dupSet.has(k)) dupSet.add(k);
     }
     if (act && Array.isArray(act)) {
       // merge: keep all unique entries from both local and shared
@@ -282,6 +288,7 @@ async function loadSharedData() {
     }
     localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
     saveDone();
+    saveDup();
     localStorage.setItem("cl_activity", JSON.stringify(activityLog));
     return true;
   } catch (e) { console.warn("shared load failed, using local", e); return false; }
@@ -290,14 +297,16 @@ async function pushSharedData() {
   updateSyncStatus("syncing…");
   // read shared state first so a session with stale/empty local data
   // can never wipe a teammate's saves (read-merge-write)
-  let sharedEmails = {}, sharedSent = {}, sharedAct = [];
+  let sharedEmails = {}, sharedSent = {}, sharedDup = {}, sharedAct = [];
   try {
-    const [e, s, a] = await Promise.all([
+    const [e, s, d, a] = await Promise.all([
       ghRead("docs/data/saved_emails.json"),
       ghRead("docs/data/sent.json"),
+      ghRead("docs/data/duplicates.json"),
       ghRead("docs/data/activity.json")]);
     if (e) sharedEmails = e;
     if (s) sharedSent = s;
+    if (d) sharedDup = d;
     if (Array.isArray(a)) sharedAct = a;
   } catch (err) { console.warn("shared read failed", err); }
   const emailsObj = {};
@@ -306,6 +315,9 @@ async function pushSharedData() {
   const sentObj = {};
   for (const k in sharedSent) sentObj[k] = sharedSent[k];
   for (const id of doneSet) sentObj[id] = {by: currentUser, at: new Date().toISOString()};
+  const dupObj = {};
+  for (const k in sharedDup) dupObj[k] = sharedDup[k];
+  for (const id of dupSet) dupObj[id] = {by: currentUser, at: new Date().toISOString()};
   const seen = new Set(sharedAct.map(x => x.ts + "|" + x.user + "|" + x.action + "|" + x.leadId));
   const mergedAct = sharedAct.slice();
   for (const e of activityLog) {
@@ -315,14 +327,17 @@ async function pushSharedData() {
   const results = await Promise.all([
     ghWrite("docs/data/saved_emails.json", emailsObj),
     ghWrite("docs/data/sent.json", sentObj),
+    ghWrite("docs/data/duplicates.json", dupObj),
     ghWrite("docs/data/activity.json", mergedAct.slice(-5000))]);
   // converge local state with shared so later actions can't drop data
   for (const k in emailsObj) savedEmails[k] = emailsObj[k];
   for (const k in sentObj) doneSet.add(k);
+  for (const k in dupObj) dupSet.add(k);
   activityLog = mergedAct.slice(-5000);
   try {
     localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
     localStorage.setItem("cl_done", JSON.stringify([...doneSet]));
+    localStorage.setItem("cl_dup", JSON.stringify([...dupSet]));
     localStorage.setItem("cl_activity", JSON.stringify(activityLog));
   } catch (err) {}
   updateSyncStatus(results.every(Boolean) ? "✓ synced" : "⚠ sync failed — check token");
@@ -414,7 +429,8 @@ function renderActivity() {
     const d = new Date(e.ts);
     const when = d.toLocaleString("en-IN", {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"});
     const actLabel = {"email_saved": "✉️ saved email", "marked_sent": "✅ marked sent",
-      "unmarked_sent": "↩️ unmarked sent", "login": "👋 logged in"}[e.action] || e.action;
+      "unmarked_sent": "↩️ unmarked sent", "marked_dup": "👥 marked duplicate",
+      "unmarked_dup": "↩️ unmarked duplicate", "login": "👋 logged in"}[e.action] || e.action;
     return `<div class="actrow">
       <span class="ats">${when}</span> ·
       <span class="auser">${esc(e.user)}</span>
@@ -439,6 +455,8 @@ function exportActivity() {
 let LEADS = [];
 const doneSet = new Set(JSON.parse(localStorage.getItem("cl_done") || "[]"));
 const saveDone = () => localStorage.setItem("cl_done", JSON.stringify([...doneSet]));
+const dupSet = new Set(JSON.parse(localStorage.getItem("cl_dup") || "[]"));
+const saveDup = () => localStorage.setItem("cl_dup", JSON.stringify([...dupSet]));
 // Manually saved emails (lead id -> {email, by, at}), synced via GitHub
 let savedEmails = JSON.parse(localStorage.getItem("cl_emails") || "{}");
 const saveEmails = () => localStorage.setItem("cl_emails", JSON.stringify(savedEmails));
@@ -482,8 +500,9 @@ function render() {
   let shown = 0;
   for (const l of LEADS) {
     const isDone = doneSet.has(l.id);
+    const isDup = dupSet.has(l.id);
     const hasEmail = !!leadEmail(l);
-    if (fd === "todo" && isDone) continue;
+    if (fd === "todo" && (isDone || isDup)) continue;
     if (fd === "sent" && !isDone) continue;
     if (fe === "has" && !hasEmail) continue;
     if (fe === "needs" && hasEmail) continue;
@@ -510,6 +529,7 @@ function render() {
        <div class="row">
          <a class="send" href="${mailto(l)}">${hasEmail ? "✉️ Send email" : "✉️ Compose — paste email"}</a>
          <button class="donebtn">${isDone ? "✓ sent" : "mark sent"}</button>
+         <button class="dupbtn">${isDup ? "✓ dup" : "duplicate"}</button>
        </div>
        ${hasEmail
          ? (savedEmails[l.id] ? `<div class="norelay">✉️ ${esc(leadEmail(l))} (saved by ${esc(savedBy(l) || "you")})</div>` : "")
@@ -522,6 +542,11 @@ function render() {
       if (isDone) { doneSet.delete(l.id); logActivity("unmarked_sent", l, ""); }
       else { doneSet.add(l.id); logActivity("marked_sent", l, ""); }
       saveDone(); render();
+    };
+    d.querySelector(".dupbtn").onclick = () => {
+      if (isDup) { dupSet.delete(l.id); logActivity("unmarked_dup", l, ""); }
+      else { dupSet.add(l.id); logActivity("marked_dup", l, ""); }
+      saveDup(); render();
     };
     const saveBtn = d.querySelector(".savebtn");
     if (saveBtn) {
@@ -537,7 +562,7 @@ function render() {
     }
     list.appendChild(d);
   }
-  document.getElementById("count").textContent = shown + " to send · " + doneSet.size + " marked sent";
+  document.getElementById("count").textContent = shown + " to send · " + doneSet.size + " marked sent · " + dupSet.size + " duplicates";
   if (!shown) list.innerHTML = '<div class="empty">Nothing here. Try clearing filters.</div>';
 }
 
