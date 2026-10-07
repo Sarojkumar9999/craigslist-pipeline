@@ -87,6 +87,7 @@
   <div class="sub" id="summary">loading…</div>
   <div class="userbar" id="userbar" style="display:none">
     👤 <b id="username"></b>
+    <span id="syncStatus" style="font-size:11px"></span>
     <button onclick="switchUser()">switch</button>
   </div>
 </header>
@@ -138,10 +139,10 @@
 <div id="loginOverlay">
   <div class="loginbox">
     <h2>🔒 Team login</h2>
-    <p>Enter the team password and your name.</p>
+    <p>Enter the team password, your name, and the GitHub token (ask Saroj — paste once, saved on your phone).</p>
     <input id="loginPass" type="password" placeholder="Team password" autocomplete="off">
     <input id="loginName" placeholder="Your name" autocomplete="off">
-    <input id="loginToken" type="password" placeholder="GitHub token (paste once)" autocomplete="off" style="display:none">
+    <input id="loginToken" type="password" placeholder="GitHub token (paste once)" autocomplete="off">
     <button onclick="doLogin()">Start working →</button>
     <p id="loginErr" style="color:#e5484d;display:none;margin-top:8px">Wrong password. Ask Saroj.</p>
   </div>
@@ -198,26 +199,24 @@ let activityLog = JSON.parse(localStorage.getItem("cl_activity") || "[]");
 function doLogin() {
   const pass = (document.getElementById("loginPass").value || "").trim();
   const name = (document.getElementById("loginName").value || "").trim();
-  const token = (document.getElementById("loginToken").value || "").trim();
+  let token = (document.getElementById("loginToken").value || "").trim();
   if (pass !== TEAM_PASSWORD) {
     document.getElementById("loginErr").style.display = "block";
     document.getElementById("loginPass").focus();
     return;
   }
   if (!name) { document.getElementById("loginName").focus(); return; }
-  if (token) localStorage.setItem("cl_gh_token", token);
-  // show token field if not yet saved
-  if (!ghToken() && !token) {
-    document.getElementById("loginToken").style.display = "block";
-    document.getElementById("loginToken").focus();
-    return;
-  }
+  // reuse saved token if field left blank
+  if (!token) token = ghToken();
+  if (!token) { document.getElementById("loginToken").focus(); return; }
+  localStorage.setItem("cl_gh_token", token);
   currentUser = name;
   localStorage.setItem("cl_user", name);
   document.getElementById("loginOverlay").classList.add("hidden");
   updateUserbar();
+  updateSyncStatus("syncing…");
   logActivity("login", null, "started session");
-  loadSharedData().then(() => render());
+  loadSharedData().then(() => { updateSyncStatus("✓ synced"); render(); });
 }
 // ---- GitHub-backed shared storage ----
 async function ghRead(path) {
@@ -264,14 +263,16 @@ async function loadSharedData() {
   } catch (e) { console.warn("shared load failed, using local", e); }
 }
 async function pushSharedData() {
+  updateSyncStatus("syncing…");
   const emailsObj = {};
   for (const k in savedEmails) emailsObj[k] = savedEmails[k];
   const sentObj = {};
   for (const id of doneSet) sentObj[id] = {by: currentUser, at: new Date().toISOString()};
-  await Promise.all([
+  const results = await Promise.all([
     ghWrite("docs/data/saved_emails.json", emailsObj),
     ghWrite("docs/data/sent.json", sentObj),
     ghWrite("docs/data/activity.json", activityLog.slice(-5000))]);
+  updateSyncStatus(results.every(Boolean) ? "✓ synced" : "⚠ sync failed — check token");
 }
 function switchUser() {
   document.getElementById("loginOverlay").classList.remove("hidden");
@@ -286,6 +287,10 @@ function updateUserbar() {
   } else {
     bar.style.display = "none";
   }
+}
+function updateSyncStatus(s) {
+  const el = document.getElementById("syncStatus");
+  if (el) el.textContent = s;
 }
 function logActivity(action, lead, detail) {
   const entry = {
