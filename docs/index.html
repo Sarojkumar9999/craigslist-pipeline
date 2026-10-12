@@ -582,11 +582,19 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&l
 // which the browser resolves as a relative path -> GitHub Pages 404. Normalize.
 function webUrl(w){ return /^https?:\/\//i.test(w) ? w : "https://" + w; }
 // Copy helper: clipboard API with textarea fallback (same as Targeto fix 2026-10-07)
+// Always normalizes US numbers to +1 format
 function copyText(text, btn){
   const done = () => { if(btn){ const o = btn.textContent; btn.textContent = "✓"; setTimeout(() => btn.textContent = o, 1200); } };
+  const normalized = normalizePhone(text);
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
-  } else fallbackCopy(text, done);
+    navigator.clipboard.writeText(normalized).then(done).catch(() => fallbackCopy(normalized, done));
+  } else fallbackCopy(normalized, done);
+}
+function normalizePhone(p){
+  const digits = String(p).replace(/\D/g, "");
+  if (digits.length === 10) return "+1" + digits;
+  if (digits.length === 11 && digits[0] === "1") return "+" + digits;
+  return "+" + digits; // fallback: just add +
 }
 function fallbackCopy(text, done){
   const ta = document.createElement("textarea");
