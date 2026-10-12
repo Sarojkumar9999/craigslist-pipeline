@@ -37,6 +37,9 @@
   .card.done .donebtn { color:var(--grn); border-color:var(--grn); }
   .dupbtn { background:var(--card); color:var(--mut); border:1px solid var(--line); border-radius:10px;
              padding:0 14px; font-size:14px; }
+  .copybtn { background:none; border:0; cursor:pointer; font-size:14px; padding:2px 6px;
+             border-radius:6px; vertical-align:middle; }
+  .copybtn:active { background:var(--line); }
   .empty { text-align:center; color:var(--mut); padding:40px 20px; }
   .count { color:var(--mut); font-size:12px; padding:0 14px; }
   .emailrow { display:flex; gap:8px; margin-top:8px; }
@@ -523,7 +526,7 @@ function render() {
        <div class="title">${esc(l.title||"")}</div>
        <div class="links">
          <a href="${esc(l.url)}" target="_blank" rel="noopener">Craigslist ad ↗</a>
-         ${l.phone ? `<span>📞 ${esc(l.phone)}</span>` : ""}
+         ${l.phone ? `<span>📞 ${esc(l.phone)} <button class="copybtn" data-phone="${esc(l.phone)}" title="Copy number">📋</button></span>` : ""}
          ${l.website ? `<a href="${esc(webUrl(l.website))}" target="_blank" rel="noopener">Website ↗</a>` : ""}
        </div>
        <div class="row">
@@ -548,6 +551,14 @@ function render() {
       else { dupSet.add(l.id); logActivity("marked_dup", l, ""); }
       saveDup(); render();
     };
+    const copyBtn = d.querySelector(".copybtn");
+    if (copyBtn) {
+      copyBtn.onclick = (e) => {
+        e.stopPropagation();
+        const num = copyBtn.getAttribute("data-phone");
+        copyText(num, copyBtn);
+      };
+    };
     const saveBtn = d.querySelector(".savebtn");
     if (saveBtn) {
       saveBtn.onclick = () => {
@@ -570,6 +581,20 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&l
 // FIX 2026-10-06 (main): website values often lack a scheme (e.g. "www.foo.com"),
 // which the browser resolves as a relative path -> GitHub Pages 404. Normalize.
 function webUrl(w){ return /^https?:\/\//i.test(w) ? w : "https://" + w; }
+// Copy helper: clipboard API with textarea fallback (same as Targeto fix 2026-10-07)
+function copyText(text, btn){
+  const done = () => { if(btn){ const o = btn.textContent; btn.textContent = "✓"; setTimeout(() => btn.textContent = o, 1200); } };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else fallbackCopy(text, done);
+}
+function fallbackCopy(text, done){
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand("copy"); } catch(e){}
+  document.body.removeChild(ta); done();
+}
 
 fetch("./data/leads.json")
   .then(r => r.json())
