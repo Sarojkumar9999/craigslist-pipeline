@@ -1,5 +1,5 @@
 {
- "scraped_at": "2026-10-12T08:36:06.070524+00:00",
+ "scraped_at": "2026-10-12T08:58:58.976317+00:00",
  "leads": [
   {
    "id": "7978256721",
@@ -132,19 +132,6 @@
    "relay": null,
    "phone": "(209) 298-5077",
    "website": "angelshandseniorcare.com"
-  },
-  {
-   "id": "7978095912",
-   "ad_type": "services",
-   "business": null,
-   "city": "Raleigh",
-   "state": "NC",
-   "title": "Personal Care and companion. (Raleigh)",
-   "posted": "2026-10-04T21:48:00",
-   "url": "https://www.craigslist.org/view/d/raleigh-personal-care-and-companion/pHnJ5SS64DnXYWYSGxvNpe",
-   "relay": null,
-   "phone": null,
-   "website": null
   },
   {
    "id": "7977794754",
@@ -642,7 +629,7 @@
    "url": "https://www.craigslist.org/view/d/san-diego-looking-for-companion-care/p3nP5UEEhFhKMGHjoEh9U5",
    "relay": "liascaregiving@gmail.com",
    "phone": "797-627-7654",
-   "website": null
+   "website": "https://lias-care-5r9x.squarespace.com/"
   },
   {
    "id": "7976291166",
@@ -853,19 +840,6 @@
    "website": null
   },
   {
-   "id": "7975191825",
-   "ad_type": "services",
-   "business": null,
-   "city": "San Francisco Bay Area",
-   "state": "CA",
-   "title": "IHSS Caregiver seeking clients (santa clara)",
-   "posted": "2026-09-29T00:00:00",
-   "url": "https://www.craigslist.org/view/d/santa-clara-ihss-caregiver-seeking/w6G8xerhQnFgATfH885Ksq",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7974939618",
    "ad_type": "services",
    "business": "Blue Ridge Home Healthcare",
@@ -1007,20 +981,7 @@
    "url": "https://www.craigslist.org/view/d/bowie-neighbors-helping-neighbors/ahm5vM6fsFTgeJuDdEdvDf",
    "relay": null,
    "phone": "301-247-6320",
-   "website": null
-  },
-  {
-   "id": "7974452469",
-   "ad_type": "services",
-   "business": null,
-   "city": "Fort Myers",
-   "state": "FL",
-   "title": "CNA/LNA-Male Private Duty Licensed Nursing Caregiver",
-   "posted": "2026-09-28T00:00:00",
-   "url": "https://www.craigslist.org/view/d/cape-coral-cna-lna-male-private-duty/1xNJ465QGWAQooxVJMHG27",
-   "relay": null,
-   "phone": null,
-   "website": null
+   "website": "https://clinhealthnursing.com/"
   },
   {
    "id": "7974741330",
@@ -1570,7 +1531,7 @@
    "url": "https://www.craigslist.org/view/d/villa-rica-home-care-services/77AqFxeLbY1rc3djQ6UuRj",
    "relay": "admin@signalhgwestatlanta.com",
    "phone": "797-146-7271",
-   "website": "https://signalhg.com/"
+   "website": "https://www.signalhg.com/"
   },
   {
    "id": "7971685728",
@@ -1661,7 +1622,7 @@
    "url": "https://www.craigslist.org/view/d/dallas-hanameel-at-peace-home-care-llc/fV7FkXMZ8ABnNfY1RKZ82m",
    "relay": null,
    "phone": "469-214-9623; 888-600-2511",
-   "website": null
+   "website": "https://hanameelpeacecare.com"
   },
   {
    "id": "7971346812",
@@ -1726,7 +1687,7 @@
    "url": "https://www.craigslist.org/view/d/fort-myers-companion-care-for-seniors/iYcL81d2YKDEEix2CRrSaa",
    "relay": null,
    "phone": "239-203-7698",
-   "website": null
+   "website": "https://agapefamilycare.org/"
   },
   {
    "id": "7971626847",
@@ -1831,7 +1792,7 @@
    "url": "https://www.craigslist.org/view/d/houston-luvena-home-care-we-provide/ev9Jgi1q4pHTrTcdLsiEqZ",
    "relay": null,
    "phone": "713 474 7927",
-   "website": null
+   "website": "https://luvenahomecareservices.com/"
   },
   {
    "id": "7970577153",
@@ -1961,7 +1922,7 @@
    "url": "https://www.craigslist.org/view/d/miami-beach-affordable-compassionate/8E1agPWvF3eijYkNkwNDsF",
    "relay": null,
    "phone": "796-996-6320",
-   "website": null
+   "website": "https://www.nationwidehealthservices.com/"
   },
   {
    "id": "7970021781",
@@ -2235,7 +2196,7 @@
    "url": "https://www.craigslist.org/view/d/bowie-affordable-compassionate-senior/7Hhcf1v18VgSWV7qGefE7A",
    "relay": null,
    "phone": "301-786-3842",
-   "website": null
+   "website": "https://ekellehomecare.com/"
   },
   {
    "id": "7967285322",
@@ -2327,7 +2288,7 @@
    "url": "https://www.doctorsoncall365.com",
    "relay": null,
    "phone": "786-577-9302",
-   "website": null
+   "website": "https://doctorsoncall365.com/"
   },
   {
    "id": "7967055645",
@@ -2644,591 +2605,6 @@
    "email": "tdias42@gmail.com"
   },
   {
-   "id": "7964598852",
-   "ad_type": "services",
-   "business": "NY HOME CARE SERVICES",
-   "city": "New York City",
-   "state": "NY",
-   "title": "Need More Home Care Hours? We Can Help | $22-$23/Hr (Queens, NY)",
-   "posted": "2026-09-11T11:01:00",
-   "url": "https://www.craigslist.org/view/d/new-york-need-more-home-care-hours-we/w7qHrbWbf8kwpz2QA4WPaq",
-   "relay": null,
-   "phone": "347-836-1962",
-   "website": null
-  },
-  {
-   "id": "7965016788",
-   "ad_type": "services",
-   "business": null,
-   "city": "Fresno",
-   "state": "CA",
-   "title": "Eldercare Companion & Household Pet Care Available",
-   "posted": "2026-09-11T00:00:00",
-   "url": "https://www.craigslist.org/view/d/morgan-hill-eldercare-companion/by9eS7W8wYbZKAuRj3p7wo",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964257869",
-   "ad_type": "services",
-   "business": "Humble Private Care Services LLC",
-   "city": "Houston",
-   "state": "TX",
-   "title": "Private Caregiver Available Elderly, Disability & Deaf/Hard of Hearing",
-   "posted": "2026-09-10T00:00:00",
-   "url": "https://www.craigslist.org/view/d/houston-private-caregiver-available/axev1a29wtG3H8aAXJNMMs",
-   "relay": "humbleprivatecare@gmail.com",
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964325441",
-   "ad_type": "services",
-   "business": "Pacific Angels Home Care Inc",
-   "city": "San Francisco Bay Area",
-   "state": "CA",
-   "title": "Home care aide, caregiver, personal attendant (santa cruz)",
-   "posted": "2026-09-10T00:00:00",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-home-care-aide-caregiver/mqz3HyvpoVdWLEsiVXBGsh",
-   "relay": null,
-   "phone": null,
-   "website": "pacificangelshomecare.com"
-  },
-  {
-   "id": "7964085555",
-   "ad_type": "services",
-   "business": null,
-   "city": "San Francisco Bay Area",
-   "state": "CA",
-   "title": "CAREGIVER (SAN FRANCISCO)",
-   "posted": "2026-09-10T00:00:00",
-   "url": "https://www.craigslist.org/view/d/san-francisco-caregiver/5AE2nWo4W7i9gwJZDWxA66",
-   "relay": null,
-   "phone": "415 309 1404",
-   "website": null
-  },
-  {
-   "id": "7964328948",
-   "ad_type": "services",
-   "business": null,
-   "city": "Milwaukee",
-   "state": "WI",
-   "title": "Hospice, Companionship, Elderly Sitter, Dementia private care. (Milwaukee County Racine Wisconsin)",
-   "posted": "2026-09-10T00:00:00",
-   "url": "https://www.craigslist.org/view/d/racine-hospice-companionship-elderly/eJv6ome4nR3XNf318fHpcH",
-   "relay": null,
-   "phone": "262-977-0492",
-   "website": null
-  },
-  {
-   "id": "7964103258",
-   "ad_type": "services",
-   "business": null,
-   "city": "Fresno",
-   "state": "CA",
-   "title": "Household Manager / Personal & Family Assistant",
-   "posted": "2026-09-10T00:00:00",
-   "url": "https://www.craigslist.org/view/d/atascadero-household-manager-personal/oTiyiAoCAEyQofFZoHgewx",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964140545",
-   "ad_type": "services",
-   "business": null,
-   "city": "Inland Empire",
-   "state": "CA",
-   "title": "Certified Nursing Assistant",
-   "posted": "2026-09-10T00:00:00",
-   "url": "https://www.craigslist.org/view/d/las-vegas-certified-nursing-assistant/mxew7wHMcsJya23z3BMJj7",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963734408",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York City",
-   "state": "NY",
-   "title": "Caregiver/ Home health aide (West Village)",
-   "posted": "2026-09-09T18:07:00",
-   "url": "https://www.craigslist.org/view/d/new-york-caregiver-home-health-aide/oM4tMzDEwoe1MqSaMxwSvQ",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963718616",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York City",
-   "state": "NY",
-   "title": "Caregiver/HHa assistant (West Village)",
-   "posted": "2026-09-09T17:38:00",
-   "url": "https://www.craigslist.org/view/d/jersey-city-caregiver-hha-assistant/6ywLCSk48vhmVXv3nXknV3",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963746795",
-   "ad_type": "services",
-   "business": "Renee Kingett Private Care",
-   "city": "Denver",
-   "state": "CO",
-   "title": "Private Caregiver for Seniors - 20+ Years - Bonded & Insured (Highlands Ranch South Denver)",
-   "posted": "2026-09-09T16:28:00",
-   "url": "https://www.craigslist.org/view/d/littleton-private-caregiver-for-seniors/rGNxTcwJQqdzKAswN9rU4c",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963564335",
-   "ad_type": "hiring",
-   "business": "Tenere Home Care Services, LLC",
-   "city": "Minneapolis",
-   "state": "MN",
-   "title": "In search of a PCA (East Bethel)",
-   "posted": "2026-09-09T13:05:00",
-   "url": "https://www.craigslist.org/view/d/cedar-in-search-of-pca/tfmYPNFZwupRbr4jem2N99",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963862460",
-   "ad_type": "services",
-   "business": "Carepro homecare agency",
-   "city": "Pittsburgh",
-   "state": "PA",
-   "title": "Home care \u201c private care\u201d",
-   "posted": "2026-09-09T00:00:00",
-   "url": "https://www.craigslist.org/view/d/monroeville-home-care-private-care/83axmnNSZYfjTCXuAZGb8G",
-   "relay": null,
-   "phone": "4126094720",
-   "website": null
-  },
-  {
-   "id": "7963805334",
-   "ad_type": "services",
-   "business": null,
-   "city": "Los Angeles",
-   "state": "CA",
-   "title": "Jane of all trades Live In Option (Los Angeles)",
-   "posted": "2026-09-09T00:00:00",
-   "url": "https://www.craigslist.org/view/d/los-angeles-jane-of-all-trades-live-in/tzh7tLz5mnQxvuWXV3FFyB",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963796187",
-   "ad_type": "services",
-   "business": "Genius Senior Helpers LLC",
-   "city": "Des Moines",
-   "state": "IA",
-   "title": "Private-Pay Senior Home Care (Des Moines Metro)",
-   "posted": "2026-09-09T00:00:00",
-   "url": "https://www.craigslist.org/view/d/urbandale-private-pay-senior-home-care/31hQbD4hriZax2XJtuJk7D",
-   "relay": "5f51099f76103524b272fcc956390b56@serv.craigslist.org",
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963579815",
-   "ad_type": "services",
-   "business": null,
-   "city": "Memphis",
-   "state": "TN",
-   "title": "RN available for respite care for your loved one",
-   "posted": "2026-09-09T00:00:00",
-   "url": "https://www.craigslist.org/view/d/horn-lake-rn-available-for-respite-care/soY57KABx22GY948hKtJCH",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963156755",
-   "ad_type": "services",
-   "business": "Ever Well Care Solutions",
-   "city": "Miami",
-   "state": "FL",
-   "title": "Compassionate In-Home Care Services \u2013 Ever Well Care Solutions (Miami)",
-   "posted": "2026-09-08T19:03:00",
-   "url": "https://www.craigslist.org/view/d/miami-compassionate-in-home-care/avSMDDcdgtLotTzajW4Xmy",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963026342",
-   "ad_type": "services",
-   "business": "Unique Home Care (UHC)",
-   "city": "Tampa",
-   "state": "FL",
-   "title": "LOOKING FOR RELIABLE IN-HOME CARE FOR YOURSELF OR A LOVED ONE?",
-   "posted": "2026-09-08T15:41:00",
-   "url": "https://www.craigslist.org/view/d/tampa-looking-for-reliable-in-home-care/kW3wLB63MAPAmYBKPFpQB4",
-   "relay": "info@unique-homecare.com",
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962903147",
-   "ad_type": "services",
-   "business": "Candus Cares",
-   "city": "Detroit",
-   "state": "MI",
-   "title": "AUTO INJURY? NEED ATTENDANT CARE AT HOME? CALL CANDUS CARES \u2014 PRIVATE (Southfield)",
-   "posted": "2026-09-08T13:04:00",
-   "url": "https://www.craigslist.org/view/d/southfield-auto-injury-need-attendant/87DKa8wwksku2jiUT8d98P",
-   "relay": null,
-   "phone": "248-282-2288",
-   "website": null
-  },
-  {
-   "id": "7962899088",
-   "ad_type": "services",
-   "business": "Prestige Case Management",
-   "city": "Detroit",
-   "state": "MI",
-   "title": "GET PAID TO CARE FOR YOUR LOVED ONE \u2014 UP TO $17 AN HOUR! (Southfield)",
-   "posted": "2026-09-08T12:59:00",
-   "url": "https://www.craigslist.org/view/d/southfield-get-paid-to-care-for-your/9ZXaTrKav17bCdDA4cttyY",
-   "relay": "prestigeconsulting4@gmail.com",
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962809541",
-   "ad_type": "services",
-   "business": null,
-   "city": "Buffalo",
-   "state": "NY",
-   "title": "Caregiver Home Health Aide (Amherst)",
-   "posted": "2026-09-08T11:08:00",
-   "url": "https://www.craigslist.org/view/d/buffalo-caregiver-home-health-aide/cUKe6JLQEvb5Hsg3PHsom7",
-   "relay": null,
-   "phone": "716-264-5694",
-   "website": null
-  },
-  {
-   "id": "7962789861",
-   "ad_type": "services",
-   "business": "CAREFOCUS COPORATION",
-   "city": "Minneapolis",
-   "state": "MN",
-   "title": "HOME CARE DIRECTOR OF NURSING (ST PAUL, MINNEAPOLIS)",
-   "posted": "2026-09-08T09:37:00",
-   "url": "https://www.craigslist.org/view/d/saint-paul-home-care-director-of-nursing/5hcubW7dkPfPoXP54Lf4tC",
-   "relay": null,
-   "phone": "651-925-5598",
-   "website": null
-  },
-  {
-   "id": "7962844194",
-   "ad_type": "services",
-   "business": "Assisting Hands Home Care (Alamo Heights)",
-   "city": "San Antonio",
-   "state": "TX",
-   "title": "ASSISTING HANDS HOME CARE \u2013 ALAMO HEIGHTS IS ACCEPTING NEW CLIENTS! \ud83d\udc99",
-   "posted": "2026-09-08T00:00:00",
-   "url": "https://www.craigslist.org/view/d/san-antonio-assisting-hands-home-care/pPnYWyCqfojGScbZ7Mm4Up",
-   "relay": null,
-   "phone": "210-680-7886",
-   "website": "https://assistinghands.com/58/texas/sanantonio/"
-  },
-  {
-   "id": "7962951969",
-   "ad_type": "services",
-   "business": "Genuine Caregivers Group",
-   "city": "San Francisco Bay Area",
-   "state": "CA",
-   "title": "Genuine Caregivers Group (los gatos)",
-   "posted": "2026-09-08T00:00:00",
-   "url": "https://www.craigslist.org/view/d/san-jose-genuine-caregivers-group/85YHa1HnTM1PoPNRiCoJ1H",
-   "relay": null,
-   "phone": null,
-   "website": "genuinecaregivers.org"
-  },
-  {
-   "id": "7962554760",
-   "ad_type": "services",
-   "business": null,
-   "city": "Spokane",
-   "state": "WA",
-   "title": "Health care offered to SENIOR",
-   "posted": "2026-09-08T00:00:00",
-   "url": "https://www.craigslist.org/view/d/coeur-alene-health-care-offered-to/qDEhJSMWiGQCkrFS1k5JTD",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962468384",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York City",
-   "state": "NY",
-   "title": "Caregiver (Nassau county)",
-   "posted": "2026-09-07T17:08:00",
-   "url": "https://www.craigslist.org/view/d/manhasset-caregiver/uV1GQPpeqi7bsLKj7pUA6q",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962439482",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York City",
-   "state": "NY",
-   "title": "Caregiver (Nassau County)",
-   "posted": "2026-09-07T16:17:00",
-   "url": "https://www.craigslist.org/view/d/manhasset-caregiver/sfMcreVyVU6X4mhAQ9SmJ5",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962215760",
-   "ad_type": "services",
-   "business": "Faithful Hearts",
-   "city": "San Antonio",
-   "state": "TX",
-   "title": "Compassionate Senior Companion & Errand Help \u2013 New Braunfels",
-   "posted": "2026-09-07T00:00:00",
-   "url": "https://www.craigslist.org/view/d/new-braunfels-compassionate-senior/pJDyNBnVStW3UeH2DNabGa",
-   "relay": null,
-   "phone": "210-482-9395",
-   "website": null
-  },
-  {
-   "id": "7962345366",
-   "ad_type": "services",
-   "business": "Luxia Harmony Haven Residential Care",
-   "city": "Dallas",
-   "state": "TX",
-   "title": "Private Residential Care Home for Seniors",
-   "posted": "2026-09-07T00:00:00",
-   "url": "https://www.craigslist.org/view/d/crandall-private-residential-care-home/863iZibrphs76i4yHaMdD3",
-   "relay": null,
-   "phone": "844-425-3624",
-   "website": null
-  },
-  {
-   "id": "7962252699",
-   "ad_type": "services",
-   "business": null,
-   "city": "San Diego",
-   "state": "CA",
-   "title": "Professional personal caregiver (San Diego)",
-   "posted": "2026-09-07T00:00:00",
-   "url": "https://www.craigslist.org/view/d/san-diego-professional-personal/hHDNYkhiXxq9ZwbaRcEoXL",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962563994",
-   "ad_type": "services",
-   "business": "Homecare Attendants LLC",
-   "city": "Richmond",
-   "state": "VA",
-   "title": "Sponsored Residential Home in Chester VA",
-   "posted": "2026-09-07T00:00:00",
-   "url": "https://www.craigslist.org/view/d/chester-sponsored-residential-home-in/jpx6z683QuxbD8zLtN9huT",
-   "relay": "43e21b12bff037d2a9e84f707f0f034e@serv.craigslist.org",
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961863455",
-   "ad_type": "services",
-   "business": null,
-   "city": "Honolulu",
-   "state": "HI",
-   "title": "Private home care CMA certified",
-   "posted": "2026-09-07T00:00:00",
-   "url": "https://www.craigslist.org/view/d/kealia-private-home-care-cma-certified/eCSCGfLaJ2z8UGg7Lz7ZTx",
-   "relay": null,
-   "phone": "808-652-7248",
-   "website": null
-  },
-  {
-   "id": "7963161555",
-   "ad_type": "services",
-   "business": null,
-   "city": "Bakersfield",
-   "state": "CA",
-   "title": "Home Care services",
-   "posted": "2026-09-07T00:00:00",
-   "url": "https://www.craigslist.org/view/d/upland-home-care-services/d3oQxEmr1oUEY7kvKFrUgZ",
-   "relay": null,
-   "phone": "(909)212-2247",
-   "website": null
-  },
-  {
-   "id": "7961724909",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York City",
-   "state": "NY",
-   "title": "home care personal assistant (Upper West Side)",
-   "posted": "2026-09-06T10:52:00",
-   "url": "https://www.craigslist.org/view/d/new-york-home-care-personal-assistant/uhgYBBTFHLJiZg76EFdF7v",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961926353",
-   "ad_type": "services",
-   "business": null,
-   "city": "Houston",
-   "state": "TX",
-   "title": "OUTPATIENT \"SURGERY BUDDY\" for Doctor Appts too! HOME HEALTH CARE",
-   "posted": "2026-09-06T00:00:00",
-   "url": "https://www.craigslist.org/view/d/bellaire-outpatient-surgery-buddy-for/cAmeRQyPR8Hh7UjUkhH9et",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961824644",
-   "ad_type": "services",
-   "business": null,
-   "city": "San Diego",
-   "state": "CA",
-   "title": "You need caregiver (San diego ca)",
-   "posted": "2026-09-06T00:00:00",
-   "url": "https://www.craigslist.org/view/d/el-cajon-you-need-caregiver/feGHF8kAQ4RKF6qMb42CQR",
-   "relay": null,
-   "phone": "6196336907",
-   "website": null
-  },
-  {
-   "id": "7961649171",
-   "ad_type": "services",
-   "business": null,
-   "city": "Honolulu",
-   "state": "HI",
-   "title": "HOME MANAGER / LIFE MANAGER / CAREGIVER (Hilo, Papaikou, Pepeekeo, Honomu, Hakalau)",
-   "posted": "2026-09-06T00:00:00",
-   "url": "https://www.craigslist.org/view/d/hilo-home-manager-life-manager-caregiver/agduEmtHucpMNBKU69imNi",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961744592",
-   "ad_type": "services",
-   "business": null,
-   "city": "Inland Empire",
-   "state": "CA",
-   "title": "No place like home",
-   "posted": "2026-09-06T00:00:00",
-   "url": "https://www.craigslist.org/view/d/escondido-no-place-like-home/x184RUrKY9cBuoyhvLSoWm",
-   "relay": null,
-   "phone": "442-237-8777",
-   "website": null
-  },
-  {
-   "id": "7961929290",
-   "ad_type": "services",
-   "business": null,
-   "city": "Palm Springs",
-   "state": "CA",
-   "title": "Reliable,Trustworthy, Experienced IHSS Caregiver /Private Caregiver",
-   "posted": "2026-09-06T00:00:00",
-   "url": "https://www.craigslist.org/view/d/desert-hot-springs-reliable-trustworthy/rcFGdcfSb3vWwh2psgyzQH",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961488140",
-   "ad_type": "services",
-   "business": "Seniors Helping Seniors East Metro",
-   "city": "Minneapolis",
-   "state": "MN",
-   "title": "PT Senior Caregiver for Seniors - No Exp Necessary (Woodbury and surrounding area)",
-   "posted": "2026-09-05T17:00:00",
-   "url": "https://www.craigslist.org/view/d/saint-paul-pt-senior-caregiver-for/mRsg6SWC7gQ2uqoiC47KFF",
-   "relay": null,
-   "phone": null,
-   "website": "TwinCitiesEastSHS.com"
-  },
-  {
-   "id": "7961432127",
-   "ad_type": "services",
-   "business": null,
-   "city": "Boston",
-   "state": "MA",
-   "title": "Professional Male Live-in Caregiver Will work for Right Family (Boston Metro)",
-   "posted": "2026-09-05T16:18:00",
-   "url": "https://www.craigslist.org/view/d/brookline-professional-male-live-in/1PSrcgqXpFqZVY58CtUZU3",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961328561",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York City",
-   "state": "NY",
-   "title": "CAREGIVER & PERSONAL ASSISTANT (Westchester County)",
-   "posted": "2026-09-05T13:41:00",
-   "url": "https://www.craigslist.org/view/d/yonkers-caregiver-personal-assistant/eA9kfHbfrr6Akdrwnk2hn9",
-   "relay": null,
-   "phone": "503-924-9985",
-   "website": null
-  },
-  {
-   "id": "7961221989",
-   "ad_type": "services",
-   "business": "ICT CARES Concierge Medical Companion Services",
-   "city": "Oklahoma City",
-   "state": "OK",
-   "title": "Medical transportation concierge services (Wichita)",
-   "posted": "2026-09-05T10:12:00",
-   "url": "https://www.craigslist.org/view/d/wichita-medical-transportation/t1RLMTAB9aQvveo1R4DW9B",
-   "relay": null,
-   "phone": "316-536-3065",
-   "website": null
-  },
-  {
-   "id": "7961539044",
-   "ad_type": "services",
-   "business": null,
-   "city": "Los Angeles",
-   "state": "CA",
-   "title": "PRIVATE COMPANION / PERSONAL ASSISTANT Brentwood!",
-   "posted": "2026-09-05T00:00:00",
-   "url": "https://www.craigslist.org/view/d/los-angeles-private-companion-personal/kTEbTAmnn91Be1mFZ7Kihz",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7961553744",
-   "ad_type": "services",
-   "business": null,
-   "city": "Los Angeles",
-   "state": "CA",
-   "title": "Jane of all trades Live In Option (Los Angeles)",
-   "posted": "2026-09-05T00:00:00",
-   "url": "https://www.craigslist.org/view/d/los-angeles-jane-of-all-trades-live-in/hBq4RfMu5NMK7nq8TzGdT7",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7979187924",
    "ad_type": "services",
    "business": null,
@@ -3239,7 +2615,8 @@
    "url": "https://www.craigslist.org/view/d/trenton-in-home-care-do-you-need/4wJRgNiBRQthA1zkGLc1xa",
    "relay": null,
    "phone": "797-918-7924",
-   "website": null
+   "website": null,
+   "_source": "sapi_test_2026-10-07"
   },
   {
    "id": "7977069663",
@@ -3252,7 +2629,8 @@
    "url": "https://www.craigslist.org/view/d/new-york-application-paperwork-help/jToiTECFvf4qtHgPNgizzN",
    "relay": null,
    "phone": "797-706-9663",
-   "website": null
+   "website": null,
+   "_source": "sapi_test_2026-10-07"
   },
   {
    "id": "7978998141",
@@ -3463,19 +2841,6 @@
    "website": null
   },
   {
-   "id": "7963182432",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "In-Home Care & CareHome (Nahamu Community Care)",
-   "posted": "2026-09-08T23:56:47",
-   "url": "https://www.craigslist.org/view/d/san-jose-in-home-care-carehome-nahamu/5nfxtz4kPMdwGozAAWHd1j",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7971942996",
    "ad_type": "services",
    "business": null,
@@ -3588,32 +2953,6 @@
    "title": "Marin yard maintenance, local crew, book instantly online!",
    "posted": "2026-10-07T10:28:58",
    "url": "https://www.craigslist.org/view/d/greenbrae-marin-yard-maintenance-local/6uG8nqYzUfm1qLgR4pHXDD",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7979328096",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Crystal Clean Housekeeping | Reliable & Affordable Cleaning",
-   "posted": "2026-10-07T05:53:44",
-   "url": "https://www.craigslist.org/view/d/santa-rosa-crystal-clean-housekeeping/vgCjT8P7GrW9t5UFkXmFQC",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7979328087",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "\u2728 Crystal Clean Housekeeping \u2728 Professional \u2022 Reliable \u2022 Judgment-Free",
-   "posted": "2026-10-07T05:53:41",
-   "url": "https://www.craigslist.org/view/d/santa-rosa-crystal-clean-housekeeping/fHTrvVwnkfUZZJNwFnAaJ5",
    "relay": null,
    "phone": null,
    "website": null
@@ -4295,19 +3634,6 @@
    "website": null
   },
   {
-   "id": "7964085552",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Male Caregivers / Home Care Aides needed Immediately in RIO VISTA",
-   "posted": "2026-09-10T16:30:58",
-   "url": "https://www.craigslist.org/view/d/rio-vista-male-caregivers-home-care/uu2GToqScgR4jSYgEys9g1",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7974033000",
    "ad_type": "jobs",
    "business": null,
@@ -4321,19 +3647,6 @@
    "website": null
   },
   {
-   "id": "7963227171",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Home Care Aide - Milpitas",
-   "posted": "2026-09-09T01:41:59",
-   "url": "https://www.craigslist.org/view/d/milpitas-home-care-aide-milpitas/cnfbmm8XdXGpeUtjFa7qEB",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7972375482",
    "ad_type": "jobs",
    "business": null,
@@ -4342,19 +3655,6 @@
    "title": "Overnight In-Home Support (can sleep during shift)",
    "posted": "2026-09-24T22:22:00",
    "url": "https://www.craigslist.org/view/d/san-rafael-overnight-in-home-support/tq6qynyQqLfi8787hocyxm",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962528060",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Direct Support Professional for Residential Care Home - Great Pay!",
-   "posted": "2026-09-07T23:00:48",
-   "url": "https://www.craigslist.org/view/d/san-jose-direct-support-professional/nLSAeDx7mEsd37Nx3Smx3L",
    "relay": null,
    "phone": null,
    "website": null
@@ -4604,19 +3904,6 @@
    "url": "https://www.craigslist.org/view/d/berkeley-occupational-therapist-sign-on/6pgUtK298RGQPuEULSWlEQ",
    "relay": null,
    "phone": "408-415-8112",
-   "website": null
-  },
-  {
-   "id": "7975920318",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Regional Speech Language Pathologist (SLP)",
-   "posted": "2026-10-01T07:10:52",
-   "url": "https://www.craigslist.org/view/d/hayward-regional-speech-language/3qz1rWa98RGTa8FE880MbA",
-   "relay": null,
-   "phone": null,
    "website": null
   },
   {
@@ -4984,19 +4271,6 @@
    "website": null
   },
   {
-   "id": "7963771452",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Cat Town: Cat Care Coordinator",
-   "posted": "2026-09-09T23:15:35",
-   "url": "https://www.craigslist.org/view/d/oakland-cat-town-cat-care-coordinator/v4pupLubrZWxt9yeJYLgpr",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7968419526",
    "ad_type": "jobs",
    "business": null,
@@ -5179,19 +4453,6 @@
    "website": null
   },
   {
-   "id": "7978323822",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Rooftop Technician \u2013 Holiday Lighting & Solar Panel Cleaning (EastBay)",
-   "posted": "2026-10-05T16:07:22",
-   "url": "https://www.craigslist.org/view/d/concord-rooftop-technician-holiday/qEs5TnCnpG2pyNuQLqrKVb",
-   "relay": null,
-   "phone": "925-324-2885",
-   "website": null
-  },
-  {
    "id": "7978304805",
    "ad_type": "jobs",
    "business": null,
@@ -5257,32 +4518,6 @@
    "website": null
   },
   {
-   "id": "7964860593",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Job Coach / Direct Support Professional",
-   "posted": "2026-09-11T20:44:43",
-   "url": "https://www.craigslist.org/view/d/hayward-job-coach-direct-support/bUF5YDsS4mo6LV5hHmSpsF",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964858832",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Direct Support Professional",
-   "posted": "2026-09-11T20:41:34",
-   "url": "https://www.craigslist.org/view/d/san-jose-direct-support-professional/aiAwtNvh4DBa67yu8mH7g2",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7975237590",
    "ad_type": "jobs",
    "business": null,
@@ -5322,149 +4557,6 @@
    "website": "https://www.lifeworks.life"
   },
   {
-   "id": "7964303526",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Immediate Need Caregivers in Marin 10-12 hour and Weekend Shifts",
-   "posted": "2026-09-10T21:33:58",
-   "url": "https://www.craigslist.org/view/d/san-rafael-immediate-need-caregivers-in/2GwCTiB88dHniG8VsgTsXi",
-   "relay": null,
-   "phone": "415-883-6260",
-   "website": "https://www.HomeInstead.com/255"
-  },
-  {
-   "id": "7963839654",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver for young woman with Autism/developmental disabilities",
-   "posted": "2026-09-10T02:04:55",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-caregiver-for-young-woman/cfRzPNCgSnZdXyVsQ6UFVK",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963839285",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver for young woman with Autism/developmental disabilities",
-   "posted": "2026-09-10T02:03:50",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-caregiver-for-young-woman/sQHXJFs5CH3Ttgo4x9XYnt",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963753485",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver for adult woman with Cerebral Palsy every other weekend",
-   "posted": "2026-09-09T22:40:58",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-caregiver-for-adult-woman/sZe7LRBXuBvDkXnBYaKegt",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963752453",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver for woman with Cerebral Palsy for ever other weekend",
-   "posted": "2026-09-09T22:38:58",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-caregiver-for-woman-with/852ifo6LL5LGVjuLfeKDn4",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963650567",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Server at Fast Paced Brewery and Restaurant",
-   "posted": "2026-09-09T20:02:48",
-   "url": "https://www.craigslist.org/view/d/fairfax-server-at-fast-paced-brewery/2cDCSj7QQrJudoVCpY5upZ",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963643007",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver Needed | $23\u2013$27/hr | People-First Team | Flexible Schedule",
-   "posted": "2026-09-09T19:51:33",
-   "url": "https://www.craigslist.org/view/d/san-francisco-caregiver-needed-hr/psnRvvj2agjXUYyUxgnkSv",
-   "relay": null,
-   "phone": null,
-   "website": "https://shspeninsulasf.clearcareonline.com/apply/"
-  },
-  {
-   "id": "7963240743",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Professional Organizers Needed at JMPO",
-   "posted": "2026-09-09T02:26:37",
-   "url": "https://www.craigslist.org/view/d/campbell-professional-organizers-needed/2w6q8vjcVbTrUarfpmk8r9",
-   "relay": null,
-   "phone": null,
-   "website": "https://www.jmpoestate.com/hiring"
-  },
-  {
-   "id": "7963166643",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Customer Experience Focused Taproom Manager",
-   "posted": "2026-09-08T23:20:50",
-   "url": "https://www.craigslist.org/view/d/san-carlos-customer-experience-focused/rjvp8nUE3VG56Jxg5FejBz",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963125987",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Dental Front Office Receptionist",
-   "posted": "2026-09-08T22:05:40",
-   "url": "https://www.craigslist.org/view/d/sunnyvale-dental-front-office/xbty4wusRUxenYuzPA6waG",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963093038",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregivers needed for 6-12 hour shifts in Marin ASAP",
-   "posted": "2026-09-08T21:16:13",
-   "url": "https://www.craigslist.org/view/d/novato-caregivers-needed-for-12-hour/sv3hcyzX8zPCuhPco9QyVA",
-   "relay": null,
-   "phone": null,
-   "website": "https://www.heartofhumanity.com/careers"
-  },
-  {
    "id": "7971811359",
    "ad_type": "jobs",
    "business": null,
@@ -5476,19 +4568,6 @@
    "relay": null,
    "phone": null,
    "website": "https://riman.com/Ericamoseley/en-US/home"
-  },
-  {
-   "id": "7962565704",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "caregiver for developmentally disabled woman (Santa Cruz)",
-   "posted": "2026-09-08T00:21:26",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-caregiver-for/75czLrN2g6SnXZqSncc1U5",
-   "relay": null,
-   "phone": "831-566-1972",
-   "website": null
   },
   {
    "id": "7970710884",
@@ -5540,45 +4619,6 @@
    "url": "https://www.craigslist.org/view/d/san-francisco-part-time-cat-sitter-san/i1oLpH8Ftqj8KAt1mafpAH",
    "relay": null,
    "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964820477",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "CLAM is Hiring an Accounting Manager \ud83c\udfe1",
-   "posted": "2026-09-11T19:48:39",
-   "url": "https://www.craigslist.org/view/d/olema-clam-is-hiring-an-accounting/gEr4PrH6YyG5124fkbR8ML",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963505970",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "PHS-SPCA Lead Veterinarian",
-   "posted": "2026-09-09T16:50:38",
-   "url": "https://www.craigslist.org/view/d/san-mateo-phs-spca-lead-veterinarian/2571f9zZXciLpYRtoVsGM2",
-   "relay": null,
-   "phone": null,
-   "website": "https://www.phs-spca.org"
-  },
-  {
-   "id": "7963230228",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Esthetician Room for Rent",
-   "posted": "2026-09-09T01:51:11",
-   "url": "https://www.craigslist.org/view/d/san-jose-esthetician-room-for-rent/uDKEw5B2i2WHN8PKKmohxc",
-   "relay": null,
-   "phone": "408-772-7877",
    "website": null
   },
   {
@@ -5658,19 +4698,6 @@
    "relay": null,
    "phone": null,
    "website": "https://www.elitecareprofessionals.com"
-  },
-  {
-   "id": "7978515702",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver for friendly mother in her 70s",
-   "posted": "2026-10-05T20:16:49",
-   "url": "https://www.craigslist.org/view/d/san-francisco-caregiver-for-friendly/gPAK1Kp63kkHUH5khMnRCF",
-   "relay": null,
-   "phone": null,
-   "website": null
   },
   {
    "id": "7976706651",
@@ -5764,19 +4791,6 @@
    "website": null
   },
   {
-   "id": "7962480678",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregiver Wanted",
-   "posted": "2026-09-07T21:28:09",
-   "url": "https://www.craigslist.org/view/d/brentwood-caregiver-wanted/qaSXzKEV4yeqkT9qvVHWyG",
-   "relay": null,
-   "phone": "510-461-8376",
-   "website": null
-  },
-  {
    "id": "7979588223",
    "ad_type": "jobs",
    "business": null,
@@ -5829,19 +4843,6 @@
    "website": "https://fccenters.org/employment/"
   },
   {
-   "id": "7975934607",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Market Facing Underwriting Trainee - San Francisco - Summer 2027",
-   "posted": "2026-10-01T08:17:49",
-   "url": "https://www.craigslist.org/view/d/stinson-beach-market-facing/1iCY0m-98RGVRuibR3UW1A",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7974389976",
    "ad_type": "jobs",
    "business": null,
@@ -5876,19 +4877,6 @@
    "title": "SURROGATES NEEDED \u2728 Starts at $60-75k+ \u2728 $1250 screening bonus",
    "posted": "2026-09-23T04:07:22",
    "url": "https://www.craigslist.org/view/d/south-san-francisco-surrogates-needed/fYRrBRJ4CPbHFbqNTtXhXU",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7970049633",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Adaptive Physical Educator \u2192 $5,000 Sign-on Bonus!",
-   "posted": "2026-09-21T00:09:23",
-   "url": "https://www.craigslist.org/view/d/pittsburg-adaptive-physical-educator/Fke8R1C18RGtn_d2_AD_IA",
    "relay": null,
    "phone": null,
    "website": null
@@ -5985,32 +4973,6 @@
    "website": null
   },
   {
-   "id": "7964902434",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Team LEE is hiring! (IHSS)",
-   "posted": "2026-09-11T21:50:36",
-   "url": "https://www.craigslist.org/view/d/berkeley-team-lee-is-hiring-ihss/mXzpaTyU2YNqtety36oFbc",
-   "relay": null,
-   "phone": null,
-   "website": "https://forms.gle/PvfAezYdtw4MBHD59"
-  },
-  {
-   "id": "7963589889",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Give the Gift of Life \u2728 Become a Surrogate \u2728 $1,250 Screening Bonus",
-   "posted": "2026-09-09T18:39:06",
-   "url": "https://www.craigslist.org/view/d/san-francisco-give-the-gift-of-life/iBNJtzRmHwH1vcRB6s1HxS",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7972902507",
    "ad_type": "jobs",
    "business": null,
@@ -6024,32 +4986,6 @@
    "website": "https://www.ChildCareCareers.com"
   },
   {
-   "id": "7962968460",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "SURROGATES NEEDED \u2728 Starts at $60-75k+ \u2728 $1250 screening bonus",
-   "posted": "2026-09-08T18:26:16",
-   "url": "https://www.craigslist.org/view/d/south-san-francisco-surrogates-needed/fWnc3CCeWU7dHEaVqUNWeg",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962516891",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Experienced Caregivers needed in Belmont, San Mateo County, N. Cali",
-   "posted": "2026-09-07T22:37:19",
-   "url": "https://www.craigslist.org/view/d/los-angeles-experienced-caregivers/cjbVMbtqSFVXjwBV8F31Tw",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7966869123",
    "ad_type": "jobs",
    "business": null,
@@ -6058,19 +4994,6 @@
    "title": "Personal Care Assistants",
    "posted": "2026-09-15T15:38:17",
    "url": "https://www.craigslist.org/view/d/oakland-personal-care-assistants/2uNZE3FnSSNmZHGtyxV9p9",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962576684",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Caregivers for ARF Full-time and Part-Time",
-   "posted": "2026-09-08T00:49:16",
-   "url": "https://www.craigslist.org/view/d/antioch-caregivers-for-arf-full-time/3HUuenoD4x6v218A3M6L5c",
    "relay": null,
    "phone": null,
    "website": null
@@ -6635,58 +5558,6 @@
    "website": null
   },
   {
-   "id": "7965027798",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Personal Trainer - Online and South Bay",
-   "posted": "2026-09-12T02:28:31",
-   "url": "https://www.craigslist.org/view/d/campbell-personal-trainer-online-and/tBAcZBcW75CQJiagJrxMY9",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964864985",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Massage by Vina - Santa Rosa",
-   "posted": "2026-09-11T20:52:50",
-   "url": "https://www.craigslist.org/view/d/santa-rosa-massage-by-vina-santa-rosa/r3SEr1u9Dd7YhFobwYZp7j",
-   "relay": null,
-   "phone": "832-233-5922",
-   "website": null
-  },
-  {
-   "id": "7964862975",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Virtual Personal Training \u2014 Live 1-on-1 Coaching (San Jose)",
-   "posted": "2026-09-11T20:49:03",
-   "url": "https://www.craigslist.org/view/d/san-jose-virtual-personal-training-live/7BhHKbgemz1rNrSiu413Bj",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964006634",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Luxurious Four Hand Massage",
-   "posted": "2026-09-10T14:40:50",
-   "url": "https://www.craigslist.org/view/d/san-francisco-luxurious-four-hand/iuFQc4toj7woDDuoFiNVjQ",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7968841530",
    "ad_type": "services",
    "business": null,
@@ -6697,19 +5568,6 @@
    "url": "https://www.craigslist.org/view/d/santa-rosa-tech-support-for-sonoma/1gqbpcEVoE9P1uiX45ZqBu",
    "relay": null,
    "phone": "707-595-0805",
-   "website": null
-  },
-  {
-   "id": "7968481146",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Personal Chef ~ Organic Meals ~ South Bay and Santa Cruz County",
-   "posted": "2026-09-18T04:21:00",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-personal-chef-organic-meals/o4gXWQjKDHPEcUK4yQNxQK",
-   "relay": null,
-   "phone": "831-247-0845",
    "website": null
   },
   {
@@ -6737,84 +5595,6 @@
    "relay": null,
    "phone": "925-408-7219",
    "website": "https://bayarea-windowcleaning.com/"
-  },
-  {
-   "id": "7963221918",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Spa at Home",
-   "posted": "2026-09-09T01:24:31",
-   "url": "https://www.craigslist.org/view/d/concord-spa-at-home/sigjxB5C8WPRP8HBAabs9g",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963123176",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "in-home 1-on-1 personal training",
-   "posted": "2026-09-08T22:01:14",
-   "url": "https://www.craigslist.org/view/d/oakland-in-home-on-personal-training/cXjDFCmcvUq7WPWsquwwxD",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962989034",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Housing in exchange for nursing care (San Francisco)",
-   "posted": "2026-09-08T18:50:01",
-   "url": "https://www.craigslist.org/view/d/san-francisco-housing-in-exchange-for/i5MU8vccKQvqQdPie1FUSD",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962674877",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "At-Home Massage by Daniel \u2013 SF + East Bay",
-   "posted": "2026-09-08T07:50:11",
-   "url": "https://www.craigslist.org/view/d/berkeley-at-home-massage-by-daniel-sf/5rd7VUqFixAuA2QfzjTVhd",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964518485",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "MINI LABRADOODLE PUPPIES",
-   "posted": "2026-09-11T12:10:45",
-   "url": "https://www.craigslist.org/view/d/napa-mini-labradoodle-puppies/9G1LyNrSSkthVwZmy2MPZd",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963880208",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Experienced, caring, fun and dog-whispering pet sitter available!",
-   "posted": "2026-09-10T04:42:34",
-   "url": "https://www.craigslist.org/view/d/oakland-experienced-caring-fun-and-dog/7ijWuEoyqhzckZLemPmYvR",
-   "relay": null,
-   "phone": null,
-   "website": null
   },
   {
    "id": "7978448139",
@@ -6867,19 +5647,6 @@
    "relay": null,
    "phone": "510-659-6088",
    "website": "http://www.ohlone.edu/org/hr/forms/docs/evaluationofforeigndegrees.pdf"
-  },
-  {
-   "id": "7979627481",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Rosie McCann's Hiring -Bartender",
-   "posted": "2026-10-07T18:47:41",
-   "url": "https://www.craigslist.org/view/d/santa-cruz-rosie-mccanns-hiring/msosUiK7sRbvvmRpi8d1dm",
-   "relay": null,
-   "phone": null,
-   "website": null
   },
   {
    "id": "7979119566",
@@ -6955,19 +5722,6 @@
    "title": "AGENTES DE SEGURO/INSURANCE AGENTS WANTED",
    "posted": "2026-10-02T03:54:12",
    "url": "https://www.craigslist.org/view/d/san-rafael-agentes-de-seguro-insurance/kpgxtkUtAVth8ACR9GgKFr",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7975905810",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Field Gutter Installer",
-   "posted": "2026-10-01T06:11:20",
-   "url": "https://www.craigslist.org/view/d/san-jose-field-gutter-installer/mkIRhl298RGmyulNHbiJ6w",
    "relay": null,
    "phone": null,
    "website": null
@@ -7155,32 +5909,6 @@
    "website": "https://AtriaCareers.com"
   },
   {
-   "id": "7963717674",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Dining Room Manager - SAN HO WON - Korean restaurant",
-   "posted": "2026-09-09T21:36:40",
-   "url": "https://www.craigslist.org/view/d/san-francisco-dining-room-manager-san/pDCHJAJCPf7CN5qU3TKg4i",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963641645",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "MICHELIN Restaurant, 7 ADAMS, is seeking an experienced CHEF DE PARTIE",
-   "posted": "2026-09-09T19:49:31",
-   "url": "https://www.craigslist.org/view/d/san-francisco-michelin-restaurant-adams/r9YCB7WNK1uNkJs2xs5vCQ",
-   "relay": null,
-   "phone": "123-563-9008",
-   "website": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/7-adams"
-  },
-  {
    "id": "7972222716",
    "ad_type": "jobs",
    "business": null,
@@ -7191,58 +5919,6 @@
    "url": "https://www.craigslist.org/view/d/san-leandro-class-box-truck-driver/gdXhwXhy1JYprv8XcAFtGx",
    "relay": null,
    "phone": "916-472-0550",
-   "website": null
-  },
-  {
-   "id": "7962909144",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Numismatic Streamer of Live Auction and Sales",
-   "posted": "2026-09-08T17:11:26",
-   "url": "https://www.craigslist.org/view/d/san-francisco-numismatic-streamer-of/vGanFCp8BDk1VzdktvbEaL",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962904752",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Senior Streamer of Live Auction and Sales",
-   "posted": "2026-09-08T17:06:11",
-   "url": "https://www.craigslist.org/view/d/san-francisco-senior-streamer-of-live/fQ5PSramLAfpeuKnowigUX",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962901980",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Streamer of Live Auction and Sales",
-   "posted": "2026-09-08T17:02:52",
-   "url": "https://www.craigslist.org/view/d/san-francisco-streamer-of-live-auction/geK8QdFmcCDT9PzRpzNqpa",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962586098",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Entry Level Energy Code Compliance INSPECTOR-RATER (Full-Time) \u25c0\u25c0\u25c0\u25c0\u25c0",
-   "posted": "2026-09-08T01:13:21",
-   "url": "https://www.craigslist.org/view/d/san-jose-entry-level-energy-code/d5hAjCxcuQoJ7xJ7A4zXwc",
-   "relay": null,
-   "phone": null,
    "website": null
   },
   {
@@ -7389,19 +6065,6 @@
    "website": null
   },
   {
-   "id": "7962472359",
-   "ad_type": "services",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "If your looking for a Personal Asst for an older adult",
-   "posted": "2026-09-07T21:15:30",
-   "url": "https://www.craigslist.org/view/d/los-altos-if-your-looking-for-personal/k6FqDSb3uJoNoKCbQUn2RA",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7979578473",
    "ad_type": "jobs",
    "business": null,
@@ -7527,19 +6190,6 @@
    "title": "WISE SONS DELI General Manager - $75k-$80k, free medical care + bonus",
    "posted": "2026-09-22T23:14:03",
    "url": "https://www.craigslist.org/view/d/san-francisco-wise-sons-deli-general/8UD9fg8uwibTZxdExed4Vy",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7970776176",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Senior Claims Examiner, Workers' Compensation",
-   "posted": "2026-09-22T10:40:09",
-   "url": "https://www.craigslist.org/view/d/san-jose-senior-claims-examiner-workers/QOnZs3G28RGG7tUjfxZ20w",
    "relay": null,
    "phone": null,
    "website": null
@@ -7675,45 +6325,6 @@
    "website": "https://dining.ucsc.edu/jobs/index.html"
   },
   {
-   "id": "7965032727",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Groundskeeper / Property Maintenance (Bilingual Preferred) - Hayward",
-   "posted": "2026-09-12T02:47:49",
-   "url": "https://www.craigslist.org/view/d/hayward-groundskeeper-property/sVcVp5V9zJ1xWt8rwH3H9k",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964706282",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Senior Environmental Graphic Designer",
-   "posted": "2026-09-11T17:18:05",
-   "url": "https://www.craigslist.org/view/d/aptos-senior-environmental-graphic/5RjUVtXMFaATBjVTnEAqPX",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964232729",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Flour + Water Hospitality Group seeks Pizza Executive Chef",
-   "posted": "2026-09-10T19:47:50",
-   "url": "https://www.craigslist.org/view/d/san-francisco-flour-water-hospitality/2ms1ujV4GqATu2F795ZFwB",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7967651169",
    "ad_type": "jobs",
    "business": null,
@@ -7722,71 +6333,6 @@
    "title": "Community Relations Sales",
    "posted": "2026-09-16T19:38:26",
    "url": "https://www.craigslist.org/view/d/sunnyvale-community-relations-sales/hkiW1gWy8RGZc8xk7rROMQ",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962824364",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "*ELECTRICAL CONSTRUCTION ESTIMATOR*",
-   "posted": "2026-09-08T15:30:30",
-   "url": "https://www.craigslist.org/view/d/pleasanton-electrical-construction/5rumqJh1PtqJ5NPMAZE5as",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7962822183",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "*ELECTRICAL CONSTRUCTION PROJECT MANAGER*",
-   "posted": "2026-09-08T15:27:22",
-   "url": "https://www.craigslist.org/view/d/pleasanton-electrical-construction/uFSEsH27tZ8wkbekx5vpmS",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7964852202",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Executive Director",
-   "posted": "2026-09-11T20:32:41",
-   "url": "https://www.craigslist.org/view/d/san-jose-executive-director/tAUjqB-u8RGnb-mc4iJ-Fw",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963549809",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Activities Director \u2013 Part-Time, 3 Days/Week (Montara)",
-   "posted": "2026-09-09T17:44:31",
-   "url": "https://www.craigslist.org/view/d/montara-activities-director-part-time/vsHCwA1hKkiagvxijqjHEs",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963482594",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Operations Coordinator",
-   "posted": "2026-09-09T16:21:16",
-   "url": "https://www.craigslist.org/view/d/olema-operations-coordinator/x66C4wpcXGNiVjBV2oFfb5",
    "relay": null,
    "phone": null,
    "website": null
@@ -7870,19 +6416,6 @@
    "website": null
   },
   {
-   "id": "7963357902",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Medical Office Data Entry (San Luis Obispo)-NOT REMOTE",
-   "posted": "2026-09-09T13:01:08",
-   "url": "https://www.craigslist.org/view/d/san-luis-obispo-medical-office-data/mjVOYk6s8RGnEd3NMFKtuA",
-   "relay": null,
-   "phone": null,
-   "website": "https://www.centralcoasthomehealth.com"
-  },
-  {
    "id": "7971103263",
    "ad_type": "jobs",
    "business": null,
@@ -7922,32 +6455,6 @@
    "website": "https://www.hospiceofhumboldt.org"
   },
   {
-   "id": "7963833771",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Intake Specialist \u2013 Elder Abuse Law",
-   "posted": "2026-09-10T01:46:29",
-   "url": "https://www.craigslist.org/view/d/sacramento-intake-specialist-elder/xtKj3vaF4jQHLzAkRUFc71",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963075707",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Associate Attorney",
-   "posted": "2026-09-08T20:51:26",
-   "url": "https://www.craigslist.org/view/d/auburn-associate-attorney/kp7MMM5rfvQYnUCF4pHXJv",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
    "id": "7975928292",
    "ad_type": "jobs",
    "business": null,
@@ -7959,19 +6466,6 @@
    "relay": null,
    "phone": null,
    "website": null
-  },
-  {
-   "id": "7964158545",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Program Aide",
-   "posted": "2026-09-10T18:05:30",
-   "url": "https://www.craigslist.org/view/d/vallejo-program-aide/rg5DwNxf5qAudqyM97KHqa",
-   "relay": null,
-   "phone": "510-468-3941",
-   "website": "https://www.solancbas.com"
   },
   {
    "id": "7974153150",
@@ -8021,19 +6515,6 @@
    "title": "IHSS Caregiver",
    "posted": "2026-09-28T18:48:47",
    "url": "https://www.craigslist.org/view/d/san-luis-obispo-ihss-caregiver/uVi2fVr8yPPNRPgUGFyk2n",
-   "relay": null,
-   "phone": null,
-   "website": null
-  },
-  {
-   "id": "7963279095",
-   "ad_type": "jobs",
-   "business": null,
-   "city": "New York",
-   "state": "NY",
-   "title": "Part-Time Overnight Caregiver/Companion",
-   "posted": "2026-09-09T05:20:45",
-   "url": "https://www.craigslist.org/view/d/reno-part-time-overnight-caregiver/ccFQAb3zTqLTCgzge51abq",
    "relay": null,
    "phone": null,
    "website": null
